@@ -153,5 +153,26 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-body);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
+  .font-mono { font-family: var(--font-mono); }
+  .smallcaps {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.6875rem;
+    color: var(--muted-ink);
+  }
+  .hairline { border-top: 1px solid var(--hairline); }
+
+  .contour-bg {
+    background-image:
+      radial-gradient(ellipse 900px 600px at 15% 10%, color-mix(in oklch, var(--accent-ink) 6%, transparent), transparent 60%),
+      radial-gradient(ellipse 1100px 700px at 90% 80%, color-mix(in oklch, var(--ink) 4%, transparent), transparent 60%);
   }
 }
+
