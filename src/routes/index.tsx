@@ -344,6 +344,12 @@ function AtlasCard({
             {entry.project}
           </p>
 
+          <span className="md:hidden mt-4 inline-flex items-center gap-2 border border-[color:var(--hairline)] px-2 py-1 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-[color:var(--accent-ink)]">
+            {isOpen ? "Collapse" : "Expand"}
+            <span aria-hidden>{isOpen ? "−" : "+"}</span>
+          </span>
+
+
           <div
             className={`grid transition-all duration-500 ease-out ${
               isOpen
@@ -429,7 +435,7 @@ function About() {
     {
       company: "Merck · Impaakt",
       role: "Early career",
-      period: "—",
+      period: "2019 – 2022",
       note: "Sustainability strategy applied to tender management in life sciences, and ESG analysis for sustainable finance.",
     },
   ];
