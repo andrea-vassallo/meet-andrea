@@ -506,31 +506,35 @@ function Expertise() {
 
 function Contact() {
   return (
-    <section className="hairline py-24 md:py-32 relative overflow-hidden">
-      <div className="absolute -right-16 -top-8 opacity-[0.08]">
-        <CompassRose className="h-64 w-64 text-[color:var(--ink)]" />
-      </div>
-      <div className="relative">
-        <div className="flex items-center gap-3 mb-10">
-          <span className="smallcaps">§06 — Contact</span>
-          <span className="h-px flex-1 bg-[color:var(--hairline)]" />
+    <section className="hairline py-20 md:py-28">
+      <div className="relative overflow-hidden bg-[color:var(--ink)] text-[color:var(--surface)] px-6 py-16 md:px-14 md:py-20">
+        <div className="absolute -right-16 -top-10 opacity-[0.14]">
+          <CompassRose className="h-72 w-72 text-[color:var(--surface)]" />
         </div>
-        <h2 className="font-display text-5xl md:text-7xl text-[color:var(--ink)] leading-[1]">
-          Let's connect.
-        </h2>
-        <p className="mt-6 max-w-lg text-[color:var(--secondary-ink)] text-lg">
-          If you're building sustainability infrastructure — or trying to make
-          one work — I'd like to hear about it.
-        </p>
+        <div className="relative">
+          <div className="flex items-center gap-3 mb-10">
+            <span className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-[color:var(--surface)]/60">
+              §06 — Contact
+            </span>
+            <span className="h-px flex-1 bg-[color:var(--surface)]/25" />
+          </div>
+          <h2 className="font-display text-5xl md:text-7xl leading-[1]">
+            Let's connect.
+          </h2>
+          <p className="mt-6 max-w-lg text-[color:var(--surface)]/70 text-lg">
+            If you're building sustainability infrastructure — or trying to make
+            one work — I'd like to hear about it.
+          </p>
 
-        <div className="mt-12 grid gap-6 max-w-lg">
-          <ContactLine label="Email" value={EMAIL} href={`mailto:${EMAIL}`} />
-          <ContactLine
-            label="LinkedIn"
-            value="andreamariavassallo"
-            href={LINKEDIN}
-            external
-          />
+          <div className="mt-12 grid gap-5 max-w-xl">
+            <ContactLine label="Email" value={EMAIL} href={`mailto:${EMAIL}`} />
+            <ContactLine
+              label="LinkedIn"
+              value="andreamariavassallo"
+              href={LINKEDIN}
+              external
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -552,23 +556,24 @@ function ContactLine({
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-      className="group flex items-baseline justify-between gap-4 border-b border-[color:var(--hairline)] pb-3 hover:border-[color:var(--accent-ink)] transition-colors"
+      className="group grid grid-cols-[5.5rem_1fr_1.5rem] items-baseline gap-4 border-b border-[color:var(--surface)]/20 pb-3 hover:border-[color:var(--surface)]/60 transition-colors"
     >
-      <div className="flex items-baseline gap-6">
-        <span className="smallcaps">{label}</span>
-        <span className="font-mono text-[color:var(--ink)] group-hover:text-[color:var(--accent-ink)] transition-colors text-sm md:text-base break-all">
-          {value}
-        </span>
-      </div>
+      <span className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-[color:var(--surface)]/55">
+        {label}
+      </span>
+      <span className="font-mono text-sm md:text-base break-all text-[color:var(--surface)]">
+        {value}
+      </span>
       <span
         aria-hidden
-        className="text-[color:var(--accent-ink)] transition-transform group-hover:translate-x-1"
+        className="justify-self-end text-[color:var(--surface)]/70 transition-transform group-hover:translate-x-1"
       >
         →
       </span>
     </a>
   );
 }
+
 
 function Footer() {
   return (
