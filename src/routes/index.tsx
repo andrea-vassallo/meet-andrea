@@ -149,34 +149,62 @@ function TopBar() {
 }
 
 function Hero() {
+  const meta = [
+    ["Ref.", "AV / PORTFOLIO / 001"],
+    ["Filed", "Barcelona, ES"],
+    ["Discipline", "ESG data implementation"],
+    ["Languages", "EN · IT · ES"],
+    ["Status", "Open to conversations"],
+  ];
   return (
-    <section className="hairline pt-16 pb-24 md:pt-24 md:pb-32">
-      <div className="flex items-center gap-3 mb-8">
+    <section className="hairline pt-14 pb-20 md:pt-20 md:pb-28">
+      <div className="flex items-center gap-3 mb-10">
         <span className="smallcaps">§01 — Statement</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
         <span className="smallcaps">Rev. 2025.11</span>
       </div>
 
-      <h1 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[1.02] text-[color:var(--ink)]">
-        Andrea Vassallo
-      </h1>
-      <p className="font-mono text-sm mt-3 text-[color:var(--accent-ink)] uppercase tracking-[0.18em]">
-        ESG Tech &amp; SaaS Solutions
-      </p>
+      <div className="grid gap-12 md:grid-cols-[minmax(0,1fr)_260px] md:gap-16">
+        <div>
+          <h1 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[1.02] text-[color:var(--ink)]">
+            Andrea Vassallo
+          </h1>
+          <p className="font-mono text-sm mt-3 text-[color:var(--accent-ink)] uppercase tracking-[0.18em]">
+            ESG Tech &amp; SaaS Solutions
+          </p>
 
-      <p className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-[color:var(--secondary-ink)]">
-        I help companies turn ESG reporting, carbon data, and supply chain
-        sustainability requirements into actionable resources — and a
-        competitive advantage.
-      </p>
+          <p className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-[color:var(--secondary-ink)]">
+            I help companies turn ESG reporting, carbon data, and supply chain
+            sustainability requirements into actionable resources — and a
+            competitive advantage.
+          </p>
 
-      <div className="mt-10 flex flex-wrap gap-3">
-        <CTA href={LINKEDIN} label="LinkedIn" external primary />
-        <CTA href={`mailto:${EMAIL}`} label="Email" />
+          <div className="mt-10 flex flex-wrap gap-3">
+            <CTA href={LINKEDIN} label="LinkedIn" external primary />
+            <CTA href={`mailto:${EMAIL}`} label="Email" />
+          </div>
+        </div>
+
+        {/* Cover-sheet metadata block */}
+        <aside className="md:border-l md:border-[color:var(--hairline)] md:pl-8 md:pt-2">
+          <div className="smallcaps mb-5">Cover sheet</div>
+          <dl className="space-y-4">
+            {meta.map(([k, v]) => (
+              <div key={k} className="border-b border-[color:var(--hairline)] pb-3">
+                <dt className="smallcaps">{k}</dt>
+                <dd className="font-mono text-[0.78rem] leading-snug mt-1.5 text-[color:var(--ink)]">
+                  {v}
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <CompassRose className="mt-8 h-12 w-12 text-[color:var(--accent-ink)] opacity-60" />
+        </aside>
       </div>
     </section>
   );
 }
+
 
 function CTA({
   href,
@@ -210,7 +238,7 @@ function CTA({
 
 function TrackRecord() {
   return (
-    <section className="hairline py-16 md:py-20">
+    <section className="hairline py-20 md:py-28">
       <div className="flex items-center gap-3 mb-10">
         <span className="smallcaps">§02 — Track Record</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
@@ -316,6 +344,12 @@ function AtlasCard({
             {entry.project}
           </p>
 
+          <span className="md:hidden mt-4 inline-flex items-center gap-2 border border-[color:var(--hairline)] px-2 py-1 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-[color:var(--accent-ink)]">
+            {isOpen ? "Collapse" : "Expand"}
+            <span aria-hidden>{isOpen ? "−" : "+"}</span>
+          </span>
+
+
           <div
             className={`grid transition-all duration-500 ease-out ${
               isOpen
@@ -334,12 +368,20 @@ function AtlasCard({
           </div>
         </div>
 
-        <div className="hidden md:block font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[color:var(--muted-ink)] pt-1">
-          Filed · {entry.filed}
-          <span className="block mt-1 text-[color:var(--accent-ink)] opacity-0 group-hover:opacity-100 transition-opacity">
-            {isOpen ? "Collapse ↑" : "Expand ↓"}
+        <div className="hidden md:flex flex-col items-end gap-3 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[color:var(--muted-ink)] pt-1">
+          <span>Filed · {entry.filed}</span>
+          <span
+            className={`inline-flex items-center gap-2 border px-2 py-1 transition-colors ${
+              isOpen
+                ? "border-[color:var(--accent-ink)] text-[color:var(--accent-ink)]"
+                : "border-[color:var(--hairline)] text-[color:var(--ink)] group-hover:border-[color:var(--accent-ink)] group-hover:text-[color:var(--accent-ink)]"
+            }`}
+          >
+            {isOpen ? "Collapse" : "Expand"}
+            <span aria-hidden>{isOpen ? "−" : "+"}</span>
           </span>
         </div>
+
       </button>
     </li>
   );
@@ -393,7 +435,7 @@ function About() {
     {
       company: "Merck · Impaakt",
       role: "Early career",
-      period: "—",
+      period: "2019 – 2022",
       note: "Sustainability strategy applied to tender management in life sciences, and ESG analysis for sustainable finance.",
     },
   ];
@@ -436,7 +478,7 @@ function About() {
 
 function Expertise() {
   return (
-    <section className="hairline py-20 md:py-24">
+    <section className="hairline py-20 md:py-28">
       <div className="flex items-center gap-3 mb-10">
         <span className="smallcaps">§05 — Domain Expertise</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
@@ -464,31 +506,35 @@ function Expertise() {
 
 function Contact() {
   return (
-    <section className="hairline py-24 md:py-32 relative overflow-hidden">
-      <div className="absolute -right-16 -top-8 opacity-[0.08]">
-        <CompassRose className="h-64 w-64 text-[color:var(--ink)]" />
-      </div>
-      <div className="relative">
-        <div className="flex items-center gap-3 mb-10">
-          <span className="smallcaps">§06 — Contact</span>
-          <span className="h-px flex-1 bg-[color:var(--hairline)]" />
+    <section className="hairline py-20 md:py-28">
+      <div className="relative overflow-hidden bg-[color:var(--ink)] text-[color:var(--surface)] px-6 py-16 md:px-14 md:py-20">
+        <div className="absolute -right-16 -top-10 opacity-[0.14]">
+          <CompassRose className="h-72 w-72 text-[color:var(--surface)]" />
         </div>
-        <h2 className="font-display text-5xl md:text-7xl text-[color:var(--ink)] leading-[1]">
-          Let's connect.
-        </h2>
-        <p className="mt-6 max-w-lg text-[color:var(--secondary-ink)] text-lg">
-          If you're building sustainability infrastructure — or trying to make
-          one work — I'd like to hear about it.
-        </p>
+        <div className="relative">
+          <div className="flex items-center gap-3 mb-10">
+            <span className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-[color:var(--surface)]/60">
+              §06 — Contact
+            </span>
+            <span className="h-px flex-1 bg-[color:var(--surface)]/25" />
+          </div>
+          <h2 className="font-display text-5xl md:text-7xl leading-[1]">
+            Let's connect.
+          </h2>
+          <p className="mt-6 max-w-lg text-[color:var(--surface)]/70 text-lg">
+            If you're building sustainability infrastructure — or trying to make
+            one work — I'd like to hear about it.
+          </p>
 
-        <div className="mt-12 grid gap-6 max-w-lg">
-          <ContactLine label="Email" value={EMAIL} href={`mailto:${EMAIL}`} />
-          <ContactLine
-            label="LinkedIn"
-            value="andreamariavassallo"
-            href={LINKEDIN}
-            external
-          />
+          <div className="mt-12 grid gap-5 max-w-xl">
+            <ContactLine label="Email" value={EMAIL} href={`mailto:${EMAIL}`} />
+            <ContactLine
+              label="LinkedIn"
+              value="andreamariavassallo"
+              href={LINKEDIN}
+              external
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -510,23 +556,24 @@ function ContactLine({
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-      className="group flex items-baseline justify-between gap-4 border-b border-[color:var(--hairline)] pb-3 hover:border-[color:var(--accent-ink)] transition-colors"
+      className="group grid grid-cols-[5.5rem_1fr_1.5rem] items-baseline gap-4 border-b border-[color:var(--surface)]/20 pb-3 hover:border-[color:var(--surface)]/60 transition-colors"
     >
-      <div className="flex items-baseline gap-6">
-        <span className="smallcaps">{label}</span>
-        <span className="font-mono text-[color:var(--ink)] group-hover:text-[color:var(--accent-ink)] transition-colors text-sm md:text-base break-all">
-          {value}
-        </span>
-      </div>
+      <span className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-[color:var(--surface)]/55">
+        {label}
+      </span>
+      <span className="font-mono text-sm md:text-base break-all text-[color:var(--surface)]">
+        {value}
+      </span>
       <span
         aria-hidden
-        className="text-[color:var(--accent-ink)] transition-transform group-hover:translate-x-1"
+        className="justify-self-end text-[color:var(--surface)]/70 transition-transform group-hover:translate-x-1"
       >
         →
       </span>
     </a>
   );
 }
+
 
 function Footer() {
   return (
