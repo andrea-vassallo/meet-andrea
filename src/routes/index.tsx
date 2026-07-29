@@ -238,7 +238,7 @@ function CTA({
 
 function TrackRecord() {
   return (
-    <section className="hairline py-16 md:py-20">
+    <section className="hairline py-20 md:py-28">
       <div className="flex items-center gap-3 mb-10">
         <span className="smallcaps">§02 — Track Record</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
@@ -362,12 +362,20 @@ function AtlasCard({
           </div>
         </div>
 
-        <div className="hidden md:block font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[color:var(--muted-ink)] pt-1">
-          Filed · {entry.filed}
-          <span className="block mt-1 text-[color:var(--accent-ink)] opacity-0 group-hover:opacity-100 transition-opacity">
-            {isOpen ? "Collapse ↑" : "Expand ↓"}
+        <div className="hidden md:flex flex-col items-end gap-3 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[color:var(--muted-ink)] pt-1">
+          <span>Filed · {entry.filed}</span>
+          <span
+            className={`inline-flex items-center gap-2 border px-2 py-1 transition-colors ${
+              isOpen
+                ? "border-[color:var(--accent-ink)] text-[color:var(--accent-ink)]"
+                : "border-[color:var(--hairline)] text-[color:var(--ink)] group-hover:border-[color:var(--accent-ink)] group-hover:text-[color:var(--accent-ink)]"
+            }`}
+          >
+            {isOpen ? "Collapse" : "Expand"}
+            <span aria-hidden>{isOpen ? "−" : "+"}</span>
           </span>
         </div>
+
       </button>
     </li>
   );
