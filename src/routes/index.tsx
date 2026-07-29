@@ -149,34 +149,62 @@ function TopBar() {
 }
 
 function Hero() {
+  const meta = [
+    ["Ref.", "AV / PORTFOLIO / 001"],
+    ["Filed", "Barcelona, ES"],
+    ["Discipline", "ESG data implementation"],
+    ["Languages", "EN · IT · ES"],
+    ["Status", "Open to conversations"],
+  ];
   return (
-    <section className="hairline pt-16 pb-24 md:pt-24 md:pb-32">
-      <div className="flex items-center gap-3 mb-8">
+    <section className="hairline pt-14 pb-20 md:pt-20 md:pb-28">
+      <div className="flex items-center gap-3 mb-10">
         <span className="smallcaps">§01 — Statement</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
         <span className="smallcaps">Rev. 2025.11</span>
       </div>
 
-      <h1 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[1.02] text-[color:var(--ink)]">
-        Andrea Vassallo
-      </h1>
-      <p className="font-mono text-sm mt-3 text-[color:var(--accent-ink)] uppercase tracking-[0.18em]">
-        ESG Tech &amp; SaaS Solutions
-      </p>
+      <div className="grid gap-12 md:grid-cols-[minmax(0,1fr)_260px] md:gap-16">
+        <div>
+          <h1 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[1.02] text-[color:var(--ink)]">
+            Andrea Vassallo
+          </h1>
+          <p className="font-mono text-sm mt-3 text-[color:var(--accent-ink)] uppercase tracking-[0.18em]">
+            ESG Tech &amp; SaaS Solutions
+          </p>
 
-      <p className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-[color:var(--secondary-ink)]">
-        I help companies turn ESG reporting, carbon data, and supply chain
-        sustainability requirements into actionable resources — and a
-        competitive advantage.
-      </p>
+          <p className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-[color:var(--secondary-ink)]">
+            I help companies turn ESG reporting, carbon data, and supply chain
+            sustainability requirements into actionable resources — and a
+            competitive advantage.
+          </p>
 
-      <div className="mt-10 flex flex-wrap gap-3">
-        <CTA href={LINKEDIN} label="LinkedIn" external primary />
-        <CTA href={`mailto:${EMAIL}`} label="Email" />
+          <div className="mt-10 flex flex-wrap gap-3">
+            <CTA href={LINKEDIN} label="LinkedIn" external primary />
+            <CTA href={`mailto:${EMAIL}`} label="Email" />
+          </div>
+        </div>
+
+        {/* Cover-sheet metadata block */}
+        <aside className="md:border-l md:border-[color:var(--hairline)] md:pl-8 md:pt-2">
+          <div className="smallcaps mb-5">Cover sheet</div>
+          <dl className="space-y-4">
+            {meta.map(([k, v]) => (
+              <div key={k} className="border-b border-[color:var(--hairline)] pb-3">
+                <dt className="smallcaps">{k}</dt>
+                <dd className="font-mono text-[0.78rem] leading-snug mt-1.5 text-[color:var(--ink)]">
+                  {v}
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <CompassRose className="mt-8 h-12 w-12 text-[color:var(--accent-ink)] opacity-60" />
+        </aside>
       </div>
     </section>
   );
 }
+
 
 function CTA({
   href,
