@@ -478,7 +478,7 @@ function About() {
 
 function Expertise() {
   return (
-    <section className="hairline py-20 md:py-24">
+    <section className="hairline py-20 md:py-28">
       <div className="flex items-center gap-3 mb-10">
         <span className="smallcaps">§05 — Domain Expertise</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
