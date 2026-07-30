@@ -3,8 +3,8 @@ import * as THREE from "three";
 
 /**
  * Interactive 3D compass mark — "Quiet Cartographer".
- * Brass-ink needle over a matte ledger-paper dial. Tilts toward the pointer,
- * drifts slowly at rest. Browser-only: import lazily behind <ClientOnly>.
+ * A minimal, slender needle on a near-flat paper dial. Tilts gently toward
+ * the pointer and drifts at rest. Browser-only: import lazily behind <ClientOnly>.
  */
 export default function Compass3D({ className = "" }: { className?: string }) {
   const mountRef = useRef<HTMLDivElement | null>(null);
@@ -17,8 +17,8 @@ export default function Compass3D({ className = "" }: { className?: string }) {
     const size = () => Math.max(1, Math.min(mount.clientWidth, mount.clientHeight));
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
-    camera.position.set(0, 2.6, 4.6);
+    const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 100);
+    camera.position.set(0, 3.2, 5.4);
     camera.lookAt(0, 0, 0);
 
     let renderer: THREE.WebGLRenderer;
@@ -38,90 +38,79 @@ export default function Compass3D({ className = "" }: { className?: string }) {
     const PAPER = 0xfafaf7;
 
     const group = new THREE.Group();
-    group.rotation.x = 0.16;
+    group.scale.setScalar(0.78);
+    group.rotation.x = 0.12;
     scene.add(group);
 
-    // Dial body
+    // Dial body — thin and matte
     const dial = new THREE.Mesh(
-      new THREE.CylinderGeometry(1.5, 1.5, 0.16, 96),
-      new THREE.MeshStandardMaterial({ color: PAPER, roughness: 0.85, metalness: 0.05 }),
+      new THREE.CylinderGeometry(1, 1, 0.08, 80),
+      new THREE.MeshStandardMaterial({ color: PAPER, roughness: 0.9, metalness: 0 }),
     );
     group.add(dial);
 
-    // Outer bezel ring
+    // Outer hairline ring
     const bezel = new THREE.Mesh(
-      new THREE.TorusGeometry(1.5, 0.075, 20, 120),
-      new THREE.MeshStandardMaterial({ color: INK, roughness: 0.45, metalness: 0.35 }),
+      new THREE.TorusGeometry(1, 0.022, 12, 100),
+      new THREE.MeshStandardMaterial({ color: INK, roughness: 0.6, metalness: 0.15 }),
     );
     bezel.rotation.x = Math.PI / 2;
+    bezel.position.y = 0.042;
     group.add(bezel);
 
-    // Inner engraved ring
-    const inner = new THREE.Mesh(
-      new THREE.TorusGeometry(1.08, 0.014, 12, 96),
-      new THREE.MeshStandardMaterial({ color: ACCENT, roughness: 0.6 }),
-    );
-    inner.rotation.x = Math.PI / 2;
-    inner.position.y = 0.082;
-    group.add(inner);
-
-    // Tick marks
-    const tickGeo = new THREE.BoxGeometry(0.03, 0.02, 0.16);
+    // Four cardinal ticks only
     const tickMat = new THREE.MeshStandardMaterial({ color: INK, roughness: 0.7 });
-    const majorMat = new THREE.MeshStandardMaterial({ color: ACCENT, roughness: 0.5 });
-    for (let i = 0; i < 32; i++) {
-      const a = (i / 32) * Math.PI * 2;
-      const major = i % 8 === 0;
-      const t = new THREE.Mesh(tickGeo, major ? majorMat : tickMat);
-      const r = 1.3;
-      t.position.set(Math.sin(a) * r, 0.085, Math.cos(a) * r);
+    for (let i = 0; i < 4; i++) {
+      const a = (i / 4) * Math.PI * 2;
+      const t = new THREE.Mesh(new THREE.BoxGeometry(0.024, 0.015, 0.14), tickMat);
+      const r = 0.82;
+      t.position.set(Math.sin(a) * r, 0.045, Math.cos(a) * r);
       t.rotation.y = a;
-      t.scale.setScalar(major ? 1.7 : 1);
       group.add(t);
     }
 
-    // Needle — two opposed blades
+    // Needle — one slender blade, north-only accent
     const needle = new THREE.Group();
-    const bladeGeo = new THREE.ConeGeometry(0.17, 1.18, 4);
+    const bladeGeo = new THREE.ConeGeometry(0.09, 1.05, 4);
     const north = new THREE.Mesh(
       bladeGeo,
-      new THREE.MeshStandardMaterial({ color: ACCENT, roughness: 0.3, metalness: 0.55 }),
+      new THREE.MeshStandardMaterial({ color: ACCENT, roughness: 0.35, metalness: 0.35 }),
     );
     north.rotation.x = -Math.PI / 2;
-    north.position.set(0, 0.2, -0.59);
+    north.position.set(0, 0.12, -0.52);
     const south = new THREE.Mesh(
       bladeGeo,
-      new THREE.MeshStandardMaterial({ color: INK, roughness: 0.4, metalness: 0.4 }),
+      new THREE.MeshStandardMaterial({ color: INK, roughness: 0.45, metalness: 0.25 }),
     );
     south.rotation.x = Math.PI / 2;
-    south.position.set(0, 0.2, 0.59);
+    south.position.set(0, 0.12, 0.52);
     needle.add(north, south);
 
     const cap = new THREE.Mesh(
-      new THREE.SphereGeometry(0.13, 32, 24),
-      new THREE.MeshStandardMaterial({ color: INK, roughness: 0.2, metalness: 0.7 }),
+      new THREE.SphereGeometry(0.07, 24, 18),
+      new THREE.MeshStandardMaterial({ color: INK, roughness: 0.3, metalness: 0.35 }),
     );
-    cap.position.y = 0.22;
+    cap.position.y = 0.16;
     needle.add(cap);
     group.add(needle);
 
-    // Lighting
-    scene.add(new THREE.AmbientLight(0xffffff, 0.75));
-    const key = new THREE.DirectionalLight(0xffffff, 1.5);
+    // Soft lighting
+    scene.add(new THREE.AmbientLight(0xffffff, 0.85));
+    const key = new THREE.DirectionalLight(0xffffff, 1.1);
     key.position.set(2.5, 4, 3);
     scene.add(key);
-    const rim = new THREE.DirectionalLight(0x9fc3b5, 0.6);
+    const rim = new THREE.DirectionalLight(0x9fc3b5, 0.35);
     rim.position.set(-3, 1.5, -2);
     scene.add(rim);
 
     // Pointer parallax
-    const target = { x: 0.16, y: 0 };
+    const target = { x: 0.12, y: 0 };
     const onPointer = (e: PointerEvent) => {
       const r = mount.getBoundingClientRect();
       const nx = (e.clientX - (r.left + r.width / 2)) / window.innerWidth;
       const ny = (e.clientY - (r.top + r.height / 2)) / window.innerHeight;
-      target.y = nx * 1.1;
-      target.x = 0.16 + ny * 0.4;
+      target.y = nx * 0.9;
+      target.x = 0.12 + ny * 0.32;
     };
     if (!reduced) window.addEventListener("pointermove", onPointer);
 
@@ -147,8 +136,8 @@ export default function Compass3D({ className = "" }: { className?: string }) {
       const t = clock.getElapsedTime();
       group.rotation.y += (target.y - group.rotation.y) * 0.05;
       group.rotation.x += (target.x - group.rotation.x) * 0.05;
-      needle.rotation.y = reduced ? -0.4 : -0.4 + Math.sin(t * 0.55) * 0.28;
-      group.position.y = reduced ? 0 : Math.sin(t * 0.8) * 0.045;
+      needle.rotation.y = reduced ? -0.35 : -0.35 + Math.sin(t * 0.5) * 0.22;
+      group.position.y = reduced ? 0 : Math.sin(t * 0.7) * 0.035;
       renderer.render(scene, camera);
     };
     tick();

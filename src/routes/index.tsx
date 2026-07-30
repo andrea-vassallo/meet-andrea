@@ -151,7 +151,7 @@ function TopBar() {
               <CompassRose className="h-6 w-6 text-[color:var(--accent-ink)]" />
             }
           >
-            <Compass3D className="h-7 w-7" />
+            <Compass3D className="h-8 w-8" />
           </Suspense>
         </ClientOnly>
         <span className="smallcaps">Andrea Vassallo · Portfolio</span>
