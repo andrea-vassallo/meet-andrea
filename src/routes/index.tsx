@@ -1,5 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { ClientOnly, createFileRoute } from "@tanstack/react-router";
+import { lazy, Suspense, useState } from "react";
+
+const Compass3D = lazy(() => import("@/components/Compass3D"));
+
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -198,7 +201,22 @@ function Hero() {
               </div>
             ))}
           </dl>
-          <CompassRose className="mt-8 h-12 w-12 text-[color:var(--accent-ink)] opacity-60" />
+          <div className="mt-8">
+            <ClientOnly
+              fallback={
+                <CompassRose className="h-32 w-32 text-[color:var(--accent-ink)] opacity-40" />
+              }
+            >
+              <Suspense
+                fallback={
+                  <CompassRose className="h-32 w-32 text-[color:var(--accent-ink)] opacity-40" />
+                }
+              >
+                <Compass3D className="h-32 w-32" />
+              </Suspense>
+            </ClientOnly>
+          </div>
+
         </aside>
       </div>
     </section>
