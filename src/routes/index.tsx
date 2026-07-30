@@ -1,5 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { ClientOnly, createFileRoute } from "@tanstack/react-router";
+import { lazy, Suspense, useState } from "react";
+
+const Compass3D = lazy(() => import("@/components/Compass3D"));
+
 
 export const Route = createFileRoute("/")({
   component: Index,
