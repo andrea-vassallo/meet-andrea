@@ -141,7 +141,19 @@ function TopBar() {
   return (
     <header className="flex items-center justify-between pt-8 pb-6">
       <div className="flex items-center gap-3">
-        <CompassRose className="h-6 w-6 text-[color:var(--accent-ink)]" />
+        <ClientOnly
+          fallback={
+            <CompassRose className="h-6 w-6 text-[color:var(--accent-ink)]" />
+          }
+        >
+          <Suspense
+            fallback={
+              <CompassRose className="h-6 w-6 text-[color:var(--accent-ink)]" />
+            }
+          >
+            <Compass3D className="h-7 w-7" />
+          </Suspense>
+        </ClientOnly>
         <span className="smallcaps">Andrea Vassallo · Portfolio</span>
       </div>
       <span className="smallcaps hidden sm:block">
@@ -201,22 +213,6 @@ function Hero() {
               </div>
             ))}
           </dl>
-          <div className="mt-8">
-            <ClientOnly
-              fallback={
-                <CompassRose className="h-32 w-32 text-[color:var(--accent-ink)] opacity-40" />
-              }
-            >
-              <Suspense
-                fallback={
-                  <CompassRose className="h-32 w-32 text-[color:var(--accent-ink)] opacity-40" />
-                }
-              >
-                <Compass3D className="h-32 w-32" />
-              </Suspense>
-            </ClientOnly>
-          </div>
-
         </aside>
       </div>
     </section>
@@ -526,9 +522,6 @@ function Contact() {
   return (
     <section className="hairline py-20 md:py-28">
       <div className="relative overflow-hidden bg-[color:var(--ink)] text-[color:var(--surface)] px-6 py-16 md:px-14 md:py-20">
-        <div className="absolute -right-16 -top-10 opacity-[0.14]">
-          <CompassRose className="h-72 w-72 text-[color:var(--surface)]" />
-        </div>
         <div className="relative">
           <div className="flex items-center gap-3 mb-10">
             <span className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-[color:var(--surface)]/60">
