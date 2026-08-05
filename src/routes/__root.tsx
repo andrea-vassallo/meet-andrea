@@ -77,23 +77,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Andrea Vassallo — ESG Tech" },
+      { title: "Andrea Vassallo — Implementation Consultant, Barcelona" },
       {
         name: "description",
         content:
-          "I turn ESG reporting, carbon data, and supply chain requirements into your competitve advantage",
+          "Implementation consultant and project manager in Barcelona. I deliver enterprise SaaS and data platforms end to end.",
       },
       { name: "author", content: "Andrea Vassallo" },
-      { property: "og:title", content: "Andrea Vassallo — ESG Tech" },
+      { property: "og:title", content: "Andrea Vassallo — Implementation Consultant, Barcelona" },
       {
         property: "og:description",
         content:
-          "I turn ESG reporting, carbon data, and supply chain requirements into your competitve advantage",
+          "Implementation consultant and project manager in Barcelona. I deliver enterprise SaaS and data platforms end to end.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Andrea Vassallo — ESG Tech" },
-      { name: "twitter:description", content: "I turn ESG reporting, carbon data, and supply chain requirements into your competitve advantage" },
+      { name: "twitter:title", content: "Andrea Vassallo — Implementation Consultant, Barcelona" },
+      { name: "twitter:description", content: "Implementation consultant and project manager in Barcelona. I deliver enterprise SaaS and data platforms end to end." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/389c451f-b211-444c-9754-0080fbddbaf6/id-preview-a7cda95f--8a706a7c-1838-498a-b824-5980252f6a15.lovable.app-1785353203641.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/389c451f-b211-444c-9754-0080fbddbaf6/id-preview-a7cda95f--8a706a7c-1838-498a-b824-5980252f6a15.lovable.app-1785353203641.png" },
     ],
