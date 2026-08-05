@@ -3,9 +3,30 @@ import { lazy, Suspense, useState } from "react";
 
 const Compass3D = lazy(() => import("@/components/Compass3D"));
 
+const OG_IMAGE =
+  "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/389c451f-b211-444c-9754-0080fbddbaf6/id-preview-a7cda95f--8a706a7c-1838-498a-b824-5980252f6a15.lovable.app-1785353203641.png";
+
+const TITLE =
+  "Andrea Vassallo — Implementation Consultant & Project Manager, Barcelona";
+const DESCRIPTION =
+  "Implementation consultant and project manager in Barcelona. I deliver enterprise SaaS and data platforms end to end — scoping, stakeholder alignment, data modelling, rollout.";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "profile" },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+      { name: "twitter:image", content: OG_IMAGE },
+    ],
+  }),
 });
 
 const EMAIL = "andreamaria.vassallo@gmail.com";
@@ -15,9 +36,10 @@ type AtlasEntry = {
   id: string;
   filed: string;
   industry: string;
-  framework: string;
+  chips: string[];
   client: string;
   project: string;
+  delivered: string;
   description: string;
 };
 
@@ -26,48 +48,81 @@ const atlas: AtlasEntry[] = [
     id: "MFG-01",
     filed: "2025",
     industry: "Manufacturing",
-    framework: "CSRD · GRI",
+    chips: ["Module rollout", "Executive stakeholders", "CSRD · GRI"],
     client: "US-based industrial manufacturer, $100M+ revenue",
     project:
-      "Reduce ESG regulatory risk exposure ahead of CSRD disclosure deadlines.",
+      "Rolled out a new reporting module across a regulated, deadline-driven disclosure program.",
+    delivered:
+      "Requirements gathering · Module configuration · Executive alignment · Disclosure workflow",
     description:
-      "Co-led a program to implement a CSRD and GRI-aligned non-financial reporting module, working directly with senior executives and individual contributors as stakeholders on the client's disclosure process.",
+      "Co-led the implementation of a non-financial reporting module, working directly with senior executives and individual contributors as stakeholders. Ran discovery, translated regulatory requirements into system configuration, and shipped against a fixed compliance deadline.",
   },
   {
     id: "F&B-02",
     filed: "2024",
     industry: "Food & Beverage",
-    framework: "GHG Protocol · Scope 3",
+    chips: ["Data governance", "Value-chain modelling", "GHG Protocol"],
     client: "$500M+ revenue manufacturer of bakery products",
-    project: "Strengthen Scope 3 data governance.",
+    project:
+      "Built data governance across a fragmented, multi-tier value chain.",
+    delivered:
+      "Data model design · Supplier data collection · Methodology application · Client enablement",
     description:
-      "Helped the client apply the GHG Protocol Standard to calculate and assess Scope 3 emissions across their entire value chain.",
+      "Designed how value-chain data was collected, structured, and validated, then applied a standardised calculation methodology across it. The output was a repeatable process the client's own team could run without me.",
   },
   {
     id: "ENR-03",
     filed: "2024",
     industry: "Energy",
-    framework: "Emission factor mapping",
+    chips: ["Pipeline automation", "Source mapping", "Audit-ready"],
     client: "Large European energy utility, €60B+ revenue",
-    project: "Turn scattered emissions data into an audit-ready structure.",
+    project:
+      "Turned scattered operational data into an automated, audit-ready structure.",
+    delivered:
+      "Source system mapping · Categorisation logic · Automated data pipelines · QA",
     description:
-      "Mapped carbon emissions from purchased and sold energy using emission factor mapping and categorization of source data, and built predictable, automated data pipelines.",
+      "Mapped heterogeneous source data into a single categorisation model and built predictable, automated pipelines to replace manual consolidation — cutting reporting effort and making the numbers defensible under audit.",
+  },
+];
+
+const capabilities = [
+  {
+    title: "Implementation & Rollout",
+    note: "Configuring and launching enterprise SaaS and data platforms for EMEA accounts — discovery, requirements, configuration, UAT, go-live, handover.",
+  },
+  {
+    title: "Project & Stakeholder Management",
+    note: "Running programs across executives and IC teams on deadline-driven timelines, keeping scope, delivery, and expectations aligned.",
+  },
+  {
+    title: "Data & Systems",
+    note: "Data modelling, source mapping, automated pipelines, and audit-ready structures that hold up under scrutiny.",
   },
 ];
 
 const stats = [
-  { label: "ESG Screenings", value: "300+" },
-  { label: "Industry Experience", value: "5+", suffix: "years" },
+  { label: "Years in Tech & Consulting", value: "5+" },
   { label: "Clients Served", value: "50+" },
+  { label: "Assessments Delivered", value: "300+" },
   { label: "Client Satisfaction", value: ">90%" },
 ];
 
-const expertise = [
+const coreSkills = [
+  "Implementation",
+  "Project management",
+  "Stakeholder management",
+  "Requirements gathering",
+  "Data modelling",
+  "SaaS configuration",
+  "Process automation",
+];
+
+const domainSkills = [
   "ESG reporting",
   "Carbon accounting",
-  "ESG risk analysis",
-  "Supply chain sustainability",
-  "ESG ratings (EcoVadis)",
+  "Supply chain data",
+  "EcoVadis",
+  "CSRD · GRI · GHG Protocol",
 ];
 
 function Index() {
@@ -77,7 +132,7 @@ function Index() {
       <div className="relative mx-auto max-w-5xl px-6 md:px-10">
         <TopBar />
         <Hero />
-        <TrackRecord />
+        <Capabilities />
         <Atlas />
         <About />
         <Expertise />
@@ -166,8 +221,9 @@ function TopBar() {
 function Hero() {
   const meta = [
     ["Ref.", "AV / PORTFOLIO / 001"],
-    ["Filed", "Barcelona, ES"],
-    ["Discipline", "ESG data implementation"],
+    ["Discipline", "Enterprise SaaS implementation · Delivery"],
+    ["Based", "Barcelona, ES · Remote-EU"],
+    ["Open to", "Tech · Fintech · Supply chain · Climate"],
     ["Languages", "EN · IT · ES"],
     ["Status", "Open to conversations"],
   ];
@@ -176,22 +232,24 @@ function Hero() {
       <div className="flex items-center gap-3 mb-10">
         <span className="smallcaps">§01 — Statement</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
-        <span className="smallcaps">Rev. 2025.11</span>
+        <span className="smallcaps">Rev. 2026.08</span>
       </div>
 
-      <div className="grid gap-12 md:grid-cols-[minmax(0,1fr)_260px] md:gap-16">
+      <div className="grid gap-12 md:grid-cols-[minmax(0,1fr)_280px] md:gap-16">
         <div>
           <h1 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[1.02] text-[color:var(--ink)]">
             Andrea Vassallo
           </h1>
           <p className="font-mono text-sm mt-3 text-[color:var(--accent-ink)] uppercase tracking-[0.18em]">
-            ESG Tech &amp; SaaS Solutions
+            Implementation Consultant · Project Delivery · Barcelona
           </p>
 
           <p className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-[color:var(--secondary-ink)]">
-            I help companies turn ESG reporting, carbon data, and supply chain
-            sustainability requirements into actionable resources — and a
-            competitive advantage.
+            I implement enterprise SaaS and data platforms end to end — scoping,
+            stakeholder alignment, data modelling, rollout. I proved that
+            delivery pattern on some of the hardest data problems there are:
+            regulated sustainability reporting, where the deadline is legal and
+            the numbers have to survive an audit.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
@@ -250,24 +308,39 @@ function CTA({
   );
 }
 
-function TrackRecord() {
+function Capabilities() {
   return (
     <section className="hairline py-20 md:py-28">
       <div className="flex items-center gap-3 mb-10">
-        <span className="smallcaps">§02 — Track Record</span>
+        <span className="smallcaps">§02 — What I Do</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
       </div>
-      <dl className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8">
+
+      <div className="grid gap-10 md:grid-cols-3 md:gap-8">
+        {capabilities.map((c, i) => (
+          <div
+            key={c.title}
+            className="border-t border-[color:var(--ink)] pt-5"
+          >
+            <div className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[color:var(--muted-ink)] mb-3">
+              № {String(i + 1).padStart(2, "0")}
+            </div>
+            <h3 className="font-display text-2xl leading-tight text-[color:var(--ink)]">
+              {c.title}
+            </h3>
+            <p className="mt-4 text-[color:var(--secondary-ink)] leading-relaxed">
+              {c.note}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <dl className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8 border-t border-[color:var(--hairline)] pt-10">
         {stats.map((s) => (
           <div key={s.label}>
             <dt className="smallcaps mb-3">{s.label}</dt>
             <dd className="font-mono text-[color:var(--ink)] text-3xl md:text-4xl leading-none">
               {s.value}
-              {s.suffix && (
-                <span className="ml-2 text-sm text-[color:var(--muted-ink)] uppercase tracking-widest">
-                  {s.suffix}
-                </span>
-              )}
             </dd>
           </div>
         ))}
@@ -281,18 +354,19 @@ function Atlas() {
   return (
     <section className="hairline py-20 md:py-28">
       <div className="flex items-center gap-3 mb-10">
-        <span className="smallcaps">§03 — Implementation Atlas</span>
+        <span className="smallcaps">§03 — Selected Implementations</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
       </div>
 
       <div className="grid md:grid-cols-[1fr_auto] gap-8 md:items-end mb-14">
         <div>
           <h2 className="font-display text-4xl md:text-5xl text-[color:var(--ink)] leading-tight">
-            A living record of how sustainability data gets implemented.
+            How complex data requirements become working systems.
           </h2>
           <p className="mt-5 max-w-xl text-[color:var(--secondary-ink)] leading-relaxed">
-            Field notes from case work across industries. Updated as new work
-            happens. Three entries so far — grid view arrives at six to eight.
+            Field notes from delivery work across regulated industries —
+            manufacturing, food &amp; beverage, energy. Different sectors, same
+            pattern: messy requirements in, a system people actually use out.
           </p>
         </div>
         <div className="font-mono text-xs text-[color:var(--muted-ink)] uppercase tracking-widest">
@@ -339,24 +413,27 @@ function AtlasCard({
         <div>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-4">
             <span className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[color:var(--muted-ink)]">
-              № {String(index).padStart(2, "0")} · {entry.id}
+              № {String(index).padStart(2, "0")} · {entry.id} · {entry.industry}
             </span>
-            <span className="font-mono text-[0.7rem] uppercase tracking-[0.18em] px-2 py-1 border border-[color:var(--hairline)] text-[color:var(--ink)]">
-              {entry.industry}
-            </span>
-            {isOpen && (
-              <span className="font-mono text-[0.7rem] uppercase tracking-[0.18em] px-2 py-1 border border-[color:var(--accent-ink)] text-[color:var(--accent-ink)]">
-                {entry.framework}
-              </span>
-            )}
           </div>
 
-          <p className="text-[color:var(--secondary-ink)] text-sm md:text-base mb-2">
-            {entry.client}
-          </p>
           <p className="text-[color:var(--ink)] text-lg md:text-xl leading-snug max-w-2xl">
             {entry.project}
           </p>
+          <p className="mt-3 text-[color:var(--secondary-ink)] text-sm md:text-base">
+            {entry.client}
+          </p>
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            {entry.chips.map((chip) => (
+              <span
+                key={chip}
+                className="font-mono text-[0.65rem] uppercase tracking-[0.16em] px-2 py-1 border border-[color:var(--hairline)] text-[color:var(--ink)]"
+              >
+                {chip}
+              </span>
+            ))}
+          </div>
 
           <span className="md:hidden mt-4 inline-flex items-center gap-2 border border-[color:var(--hairline)] px-2 py-1 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-[color:var(--accent-ink)]">
             {isOpen ? "Collapse" : "Expand"}
@@ -373,7 +450,11 @@ function AtlasCard({
           >
             <div className="overflow-hidden">
               <div className="border-l-2 border-[color:var(--accent-ink)] pl-5 max-w-2xl">
-                <div className="smallcaps mb-2">My role</div>
+                <div className="smallcaps mb-2">Delivered</div>
+                <p className="font-mono text-[0.78rem] leading-relaxed text-[color:var(--ink)]">
+                  {entry.delivered}
+                </p>
+                <div className="smallcaps mt-5 mb-2">My role</div>
                 <p className="text-[color:var(--secondary-ink)] leading-relaxed">
                   {entry.description}
                 </p>
@@ -438,19 +519,19 @@ function About() {
       company: "Sphera",
       role: "Implementation Consultant",
       period: "2025 – Present",
-      note: "Lead the delivery of data solutions for enterprise / mid-market EMEA accounts across ESG reporting, carbon accounting, PCF, and supply chain data.",
+      note: "Lead delivery of enterprise data solutions for EMEA accounts: run discovery, translate requirements into configuration, align stakeholders, and ship to go-live.",
     },
     {
       company: "EcoVadis",
       role: "Senior Analyst → Analyst",
       period: "2022 – 2025",
-      note: "Led sustainability benchmarking engagements and ESG risk analysis across the EMEA market.",
+      note: "Owned client-facing analysis engagements at scale across the EMEA market, working to strict quality standards and turnaround times.",
     },
     {
       company: "Merck · Impaakt",
       role: "Early career",
       period: "2019 – 2022",
-      note: "Sustainability strategy applied to tender management in life sciences, and ESG analysis for sustainable finance.",
+      note: "Tender management in life sciences and data-driven analysis for finance — first exposure to enterprise processes and structured evaluation frameworks.",
     },
   ];
   return (
@@ -461,8 +542,8 @@ function About() {
       </div>
 
       <p className="max-w-2xl text-xl md:text-2xl leading-relaxed text-[color:var(--ink)] font-display font-medium">
-        Five-plus years in sustainability and tech, spent turning complex ESG
-        data requirements into implementations that actually work.
+        Five-plus years in tech and consulting, spent turning complex
+        requirements into implementations that actually work.
       </p>
 
       <div className="mt-16 grid gap-0">
@@ -486,6 +567,12 @@ function About() {
           </div>
         ))}
       </div>
+
+      <p className="mt-10 max-w-2xl text-[color:var(--secondary-ink)] leading-relaxed border-l-2 border-[color:var(--accent-ink)] pl-5">
+        The work travels. The same delivery pattern applies wherever
+        enterprise systems meet data that has to be right — finance, supply
+        chain, operations, climate.
+      </p>
     </section>
   );
 }
@@ -494,21 +581,41 @@ function Expertise() {
   return (
     <section className="hairline py-20 md:py-28">
       <div className="flex items-center gap-3 mb-10">
-        <span className="smallcaps">§05 — Domain Expertise</span>
+        <span className="smallcaps">§05 — Expertise</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
       </div>
-      <ul className="flex flex-wrap gap-3">
-        {expertise.map((e) => (
-          <li
-            key={e}
-            className="px-4 py-2 border border-[color:var(--ink)] text-sm text-[color:var(--ink)] font-mono uppercase tracking-[0.12em] hover:bg-[color:var(--ink)] hover:text-[color:var(--surface)] transition-colors"
-          >
-            {e}
-          </li>
-        ))}
-      </ul>
 
-      <div className="mt-10 flex flex-wrap gap-x-8 gap-y-2 smallcaps">
+      <div className="grid gap-12 md:grid-cols-2 md:gap-16">
+        <div>
+          <div className="smallcaps mb-5">Core — transferable</div>
+          <ul className="flex flex-wrap gap-3">
+            {coreSkills.map((e) => (
+              <li
+                key={e}
+                className="px-4 py-2 border border-[color:var(--ink)] text-sm text-[color:var(--ink)] font-mono uppercase tracking-[0.12em] hover:bg-[color:var(--ink)] hover:text-[color:var(--surface)] transition-colors"
+              >
+                {e}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <div className="smallcaps mb-5">Domain depth — sustainability data</div>
+          <ul className="flex flex-wrap gap-3">
+            {domainSkills.map((e) => (
+              <li
+                key={e}
+                className="px-4 py-2 border border-dashed border-[color:var(--accent-ink)] text-sm text-[color:var(--accent-ink)] font-mono uppercase tracking-[0.12em]"
+              >
+                {e}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="mt-12 flex flex-wrap gap-x-8 gap-y-2 smallcaps border-t border-[color:var(--hairline)] pt-6">
         <span>Languages · English</span>
         <span>Italiano</span>
         <span>Español</span>
@@ -533,8 +640,9 @@ function Contact() {
             Let's connect.
           </h2>
           <p className="mt-6 max-w-lg text-[color:var(--surface)]/70 text-lg">
-            If you're building sustainability infrastructure — or trying to make
-            one work — I'd like to hear about it.
+            Open to implementation, delivery, and project management roles in
+            Barcelona and remote-EU — any vertical where systems and data have
+            to work together.
           </p>
 
           <div className="mt-12 grid gap-5 max-w-xl">
