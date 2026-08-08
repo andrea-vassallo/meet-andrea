@@ -1,7 +1,7 @@
 import { ClientOnly, createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense, useState } from "react";
 
-const Compass3D = lazy(() => import("@/components/Compass3D"));
+const Mark3D = lazy(() => import("@/components/Mark3D"));
 
 const OG_IMAGE =
   "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/389c451f-b211-444c-9754-0080fbddbaf6/id-preview-a7cda95f--8a706a7c-1838-498a-b824-5980252f6a15.lovable.app-1785353203641.png";
@@ -127,8 +127,7 @@ const domainSkills = [
 
 function Index() {
   return (
-    <main className="relative min-h-screen contour-bg">
-      <ContourOverlay />
+    <main className="relative min-h-screen grid-bg">
       <div className="relative mx-auto max-w-5xl px-6 md:px-10">
         <TopBar />
         <Hero />
@@ -143,49 +142,21 @@ function Index() {
   );
 }
 
-/* ---------- Cartographer decorative layer ---------- */
+/* ---------- Decorative layer ---------- */
 
-function ContourOverlay() {
-  return (
-    <svg
-      aria-hidden
-      className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.09]"
-      preserveAspectRatio="none"
-    >
-      <defs>
-        <pattern
-          id="grid"
-          width="48"
-          height="48"
-          patternUnits="userSpaceOnUse"
-        >
-          <path
-            d="M 48 0 L 0 0 0 48"
-            fill="none"
-            stroke="#1A3427"
-            strokeWidth="0.4"
-          />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#grid)" />
-    </svg>
-  );
-}
-
-function CompassRose({ className = "" }: { className?: string }) {
+function ModuleMark({ className = "" }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 64 64"
       className={className}
       fill="none"
       stroke="currentColor"
-      strokeWidth="1"
+      strokeWidth="2"
+      strokeLinejoin="round"
     >
-      <circle cx="32" cy="32" r="26" />
-      <circle cx="32" cy="32" r="18" strokeDasharray="1 3" />
-      <path d="M32 6 L34 32 L32 58 L30 32 Z" fill="currentColor" opacity="0.8" />
-      <path d="M6 32 L32 30 L58 32 L32 34 Z" fill="currentColor" opacity="0.4" />
-      <circle cx="32" cy="32" r="1.5" fill="currentColor" />
+      <path d="M32 12 L52 23 L32 34 L12 23 Z" />
+      <path d="M12 33 L32 44 L52 33" />
+      <path d="M12 42 L32 53 L52 42" opacity="0.5" />
     </svg>
   );
 }
@@ -198,21 +169,21 @@ function TopBar() {
       <div className="flex items-center gap-3">
         <ClientOnly
           fallback={
-            <CompassRose className="h-6 w-6 text-[color:var(--accent-ink)]" />
+            <ModuleMark className="h-6 w-6 text-[color:var(--accent-ink)]" />
           }
         >
           <Suspense
             fallback={
-              <CompassRose className="h-6 w-6 text-[color:var(--accent-ink)]" />
+              <ModuleMark className="h-6 w-6 text-[color:var(--accent-ink)]" />
             }
           >
-            <Compass3D className="h-8 w-8" />
+            <Mark3D className="h-8 w-8" />
           </Suspense>
         </ClientOnly>
         <span className="smallcaps">Andrea Vassallo · Portfolio</span>
       </div>
       <span className="smallcaps hidden sm:block">
-        Filed · Barcelona, ES · MMXXV
+        Barcelona, ES · Available 2026
       </span>
     </header>
   );
@@ -230,7 +201,7 @@ function Hero() {
   return (
     <section className="hairline pt-14 pb-20 md:pt-20 md:pb-28">
       <div className="flex items-center gap-3 mb-10">
-        <span className="smallcaps">§01 — Statement</span>
+        <span className="smallcaps">01 / STATEMENT</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
         <span className="smallcaps">Rev. 2026.08</span>
       </div>
@@ -258,9 +229,9 @@ function Hero() {
           </div>
         </div>
 
-        {/* Cover-sheet metadata block */}
+        {/* Spec panel */}
         <aside className="md:border-l md:border-[color:var(--hairline)] md:pl-8 md:pt-2">
-          <div className="smallcaps mb-5">Cover sheet</div>
+          <div className="smallcaps mb-5">Spec sheet</div>
           <dl className="space-y-4">
             {meta.map(([k, v]) => (
               <div key={k} className="border-b border-[color:var(--hairline)] pb-3">
@@ -312,7 +283,7 @@ function Capabilities() {
   return (
     <section className="hairline py-20 md:py-28">
       <div className="flex items-center gap-3 mb-10">
-        <span className="smallcaps">§02 — What I Do</span>
+        <span className="smallcaps">02 / WHAT I DO</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
       </div>
 
@@ -354,7 +325,7 @@ function Atlas() {
   return (
     <section className="hairline py-20 md:py-28">
       <div className="flex items-center gap-3 mb-10">
-        <span className="smallcaps">§03 — Selected Implementations</span>
+        <span className="smallcaps">03 / SELECTED IMPLEMENTATIONS</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
       </div>
 
@@ -464,7 +435,7 @@ function AtlasCard({
         </div>
 
         <div className="hidden md:flex flex-col items-end gap-3 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[color:var(--muted-ink)] pt-1">
-          <span>Filed · {entry.filed}</span>
+          <span>Shipped · {entry.filed}</span>
           <span
             className={`inline-flex items-center gap-2 border px-2 py-1 transition-colors ${
               isOpen
@@ -484,34 +455,28 @@ function AtlasCard({
 
 function Seal({ open }: { open: boolean }) {
   return (
-    <div className="relative h-10 w-10 md:h-12 md:w-12 shrink-0">
-      <div
-        className={`absolute inset-0 rounded-full border transition-colors ${
+    <div className="shrink-0 pt-1">
+      <span
+        className={`inline-flex items-center gap-2 border px-2 py-1 font-mono text-[0.6rem] uppercase tracking-[0.18em] transition-colors ${
           open
-            ? "bg-[color:var(--accent-ink)] border-[color:var(--accent-ink)]"
-            : "border-[color:var(--ink)]"
-        }`}
-      />
-      <div
-        className={`absolute inset-0 flex items-center justify-center transition-opacity ${
-          open ? "opacity-100" : "opacity-0"
+            ? "bg-[color:var(--accent-ink)] border-[color:var(--accent-ink)] text-[color:var(--surface)]"
+            : "border-[color:var(--hairline)] text-[color:var(--muted-ink)]"
         }`}
       >
-        <svg
-          viewBox="0 0 24 24"
-          className="h-5 w-5 text-[color:var(--surface)]"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M5 12l5 5L20 7" />
-        </svg>
-      </div>
+        <span
+          aria-hidden
+          className={`h-1.5 w-1.5 ${
+            open
+              ? "bg-[color:var(--surface)]"
+              : "bg-[color:var(--accent-ink)]"
+          }`}
+        />
+        Delivered
+      </span>
     </div>
   );
 }
+
 
 function About() {
   const roles = [
@@ -537,7 +502,7 @@ function About() {
   return (
     <section className="hairline py-20 md:py-28">
       <div className="flex items-center gap-3 mb-10">
-        <span className="smallcaps">§04 — About</span>
+        <span className="smallcaps">04 / ABOUT</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
       </div>
 
@@ -581,7 +546,7 @@ function Expertise() {
   return (
     <section className="hairline py-20 md:py-28">
       <div className="flex items-center gap-3 mb-10">
-        <span className="smallcaps">§05 — Expertise</span>
+        <span className="smallcaps">05 / EXPERTISE</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
       </div>
 
@@ -606,7 +571,7 @@ function Expertise() {
             {domainSkills.map((e) => (
               <li
                 key={e}
-                className="px-4 py-2 border border-dashed border-[color:var(--accent-ink)] text-sm text-[color:var(--accent-ink)] font-mono uppercase tracking-[0.12em]"
+                className="px-3 py-1.5 border border-[color:var(--hairline)] text-xs text-[color:var(--muted-ink)] font-mono uppercase tracking-[0.12em]"
               >
                 {e}
               </li>
@@ -632,7 +597,7 @@ function Contact() {
         <div className="relative">
           <div className="flex items-center gap-3 mb-10">
             <span className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-[color:var(--surface)]/60">
-              §06 — Contact
+              06 / CONTACT
             </span>
             <span className="h-px flex-1 bg-[color:var(--surface)]/25" />
           </div>
@@ -698,7 +663,7 @@ function Footer() {
   return (
     <footer className="hairline py-10 flex flex-wrap items-center justify-between gap-4">
       <span className="smallcaps">© {new Date().getFullYear()} · Andrea Vassallo</span>
-      <span className="smallcaps">End of document · § VI</span>
+      <span className="smallcaps">End of document · 06 / 06</span>
     </footer>
   );
 }
