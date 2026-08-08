@@ -101,14 +101,15 @@
   --sidebar-foreground: var(--ink);
   --sidebar-primary: var(--ink);
   --sidebar-primary-foreground: var(--surface);
-  --sidebar-accent: oklch(0.95 0.008 95);
+  --sidebar-accent: oklch(0.952 0.003 230);
   --sidebar-accent-foreground: var(--ink);
   --sidebar-border: var(--hairline);
   --sidebar-ring: var(--accent-ink);
 
-  --font-display: "Clash Display", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
 }
 
 
