@@ -128,7 +128,6 @@ const domainSkills = [
 function Index() {
   return (
     <main className="relative min-h-screen grid-bg">
-      <ContourOverlay />
       <div className="relative mx-auto max-w-5xl px-6 md:px-10">
         <TopBar />
         <Hero />
@@ -144,33 +143,6 @@ function Index() {
 }
 
 /* ---------- Decorative layer ---------- */
-
-function ContourOverlay() {
-  return (
-    <svg
-      aria-hidden
-      className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.06]"
-      preserveAspectRatio="none"
-    >
-      <defs>
-        <pattern
-          id="grid"
-          width="48"
-          height="48"
-          patternUnits="userSpaceOnUse"
-        >
-          <path
-            d="M 48 0 L 0 0 0 48"
-            fill="none"
-            stroke="#16181B"
-            strokeWidth="0.4"
-          />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#grid)" />
-    </svg>
-  );
-}
 
 function ModuleMark({ className = "" }: { className?: string }) {
   return (
