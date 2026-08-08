@@ -483,34 +483,28 @@ function AtlasCard({
 
 function Seal({ open }: { open: boolean }) {
   return (
-    <div className="relative h-10 w-10 md:h-12 md:w-12 shrink-0">
-      <div
-        className={`absolute inset-0 rounded-full border transition-colors ${
+    <div className="shrink-0 pt-1">
+      <span
+        className={`inline-flex items-center gap-2 border px-2 py-1 font-mono text-[0.6rem] uppercase tracking-[0.18em] transition-colors ${
           open
-            ? "bg-[color:var(--accent-ink)] border-[color:var(--accent-ink)]"
-            : "border-[color:var(--ink)]"
-        }`}
-      />
-      <div
-        className={`absolute inset-0 flex items-center justify-center transition-opacity ${
-          open ? "opacity-100" : "opacity-0"
+            ? "bg-[color:var(--accent-ink)] border-[color:var(--accent-ink)] text-[color:var(--surface)]"
+            : "border-[color:var(--hairline)] text-[color:var(--muted-ink)]"
         }`}
       >
-        <svg
-          viewBox="0 0 24 24"
-          className="h-5 w-5 text-[color:var(--surface)]"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M5 12l5 5L20 7" />
-        </svg>
-      </div>
+        <span
+          aria-hidden
+          className={`h-1.5 w-1.5 ${
+            open
+              ? "bg-[color:var(--surface)]"
+              : "bg-[color:var(--accent-ink)]"
+          }`}
+        />
+        Delivered
+      </span>
     </div>
   );
 }
+
 
 function About() {
   const roles = [
