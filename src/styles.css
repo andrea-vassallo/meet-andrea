@@ -172,10 +172,12 @@
   }
   .hairline { border-top: 1px solid var(--hairline); }
 
-  .contour-bg {
+  .grid-bg {
     background-image:
-      radial-gradient(ellipse 900px 600px at 15% 10%, color-mix(in oklch, var(--accent-ink) 6%, transparent), transparent 60%),
-      radial-gradient(ellipse 1100px 700px at 90% 80%, color-mix(in oklch, var(--ink) 4%, transparent), transparent 60%);
+      linear-gradient(color-mix(in oklch, var(--ink) 4%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklch, var(--ink) 4%, transparent) 1px, transparent 1px);
+    background-size: 64px 64px;
   }
+
 }
 
