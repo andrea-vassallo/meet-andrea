@@ -63,13 +63,14 @@
 
 :root {
   --radius: 0.25rem;
-  /* Ledger Line palette */
-  --surface: oklch(0.983 0.006 95);        /* #FAFAF7 */
-  --ink: oklch(0.286 0.036 158);           /* #1A3427 */
-  --accent-ink: oklch(0.518 0.045 165);    /* #4C7A6D */
-  --secondary-ink: oklch(0.494 0.014 90);  /* #6B6A5F */
-  --muted-ink: oklch(0.605 0.02 95);       /* #8A8975 */
-  --hairline: oklch(0.879 0.012 95);       /* #DAD8CC */
+  /* Blueprint / Console palette */
+  --surface: oklch(0.978 0.002 220);       /* #F7F8F8 */
+  --ink: oklch(0.208 0.006 250);           /* #16181B */
+  --accent-ink: oklch(0.478 0.111 259);    /* #2F5FA8 */
+  --secondary-ink: oklch(0.478 0.008 250); /* cool grey 60 */
+  --muted-ink: oklch(0.632 0.008 250);     /* cool grey 45 */
+  --hairline: oklch(0.906 0.003 230);      /* #E1E3E4 */
+
 
   --background: var(--surface);
   --foreground: var(--ink);
