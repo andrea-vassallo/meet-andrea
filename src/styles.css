@@ -80,9 +80,10 @@
   --popover-foreground: var(--ink);
   --primary: var(--ink);
   --primary-foreground: var(--surface);
-  --secondary: oklch(0.95 0.008 95);
+  --secondary: oklch(0.952 0.003 230);
   --secondary-foreground: var(--ink);
-  --muted: oklch(0.95 0.008 95);
+  --muted: oklch(0.952 0.003 230);
+
   --muted-foreground: var(--muted-ink);
   --accent: var(--accent-ink);
   --accent-foreground: var(--surface);
