@@ -287,34 +287,10 @@ function CTA({
   );
 }
 
-function Capabilities() {
+function StatsBand() {
   return (
-    <section className="hairline py-20 md:py-28">
-      <div className="flex items-center gap-3 mb-10">
-        <span className="smallcaps">02 / WHAT I DO</span>
-        <span className="h-px flex-1 bg-[color:var(--hairline)]" />
-      </div>
-
-      <div className="grid gap-10 md:grid-cols-3 md:gap-8">
-        {capabilities.map((c, i) => (
-          <div
-            key={c.title}
-            className="border-t border-[color:var(--ink)] pt-5"
-          >
-            <div className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[color:var(--muted-ink)] mb-3">
-              № {String(i + 1).padStart(2, "0")}
-            </div>
-            <h3 className="font-display text-2xl leading-tight text-[color:var(--ink)]">
-              {c.title}
-            </h3>
-            <p className="mt-4 text-[color:var(--secondary-ink)] leading-relaxed">
-              {c.note}
-            </p>
-          </div>
-        ))}
-      </div>
-
-      <dl className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8 border-t border-[color:var(--hairline)] pt-10">
+    <section className="hairline py-14 md:py-16">
+      <dl className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8">
         {stats.map((s) => (
           <div key={s.label}>
             <dt className="smallcaps mb-3">{s.label}</dt>
@@ -324,6 +300,45 @@ function Capabilities() {
           </div>
         ))}
       </dl>
+
+      <ul className="mt-10 flex flex-wrap gap-2 border-t border-[color:var(--hairline)] pt-6">
+        {tagSkills.map((skill) => (
+          <li
+            key={skill}
+            className="font-mono text-[0.62rem] uppercase tracking-[0.16em] px-2 py-1 border border-[color:var(--hairline)] text-[color:var(--muted-ink)]"
+          >
+            {skill}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function Method() {
+  return (
+    <section className="hairline py-20 md:py-28">
+      <div className="flex items-center gap-3 mb-10">
+        <span className="smallcaps">02 / METHOD</span>
+        <span className="h-px flex-1 bg-[color:var(--hairline)]" />
+        <span className="smallcaps hidden sm:block">How I work</span>
+      </div>
+
+      <div className="grid gap-8 md:grid-cols-3">
+        {method.map((m, i) => (
+          <div key={m.title} className="border-t border-[color:var(--ink)] pt-4">
+            <div className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[color:var(--muted-ink)] mb-2">
+              Step {String(i + 1).padStart(2, "0")}
+            </div>
+            <h3 className="font-mono text-sm uppercase tracking-[0.14em] text-[color:var(--ink)]">
+              {m.title}
+            </h3>
+            <p className="mt-3 text-sm md:text-base text-[color:var(--secondary-ink)] leading-relaxed">
+              {m.note}
+            </p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
