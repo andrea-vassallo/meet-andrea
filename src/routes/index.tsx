@@ -6,9 +6,9 @@ const OG_IMAGE =
   "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/389c451f-b211-444c-9754-0080fbddbaf6/id-preview-a7cda95f--8a706a7c-1838-498a-b824-5980252f6a15.lovable.app-1785353203641.png";
 
 const TITLE =
-  "Andrea Vassallo — Implementation Consultant & Project Manager, Barcelona";
+  "Andrea Vassallo — Account Rescue, Retention & Expansion, Barcelona";
 const DESCRIPTION =
-  "Implementation consultant and project manager in Barcelona. I deliver enterprise SaaS and data platforms end to end — scoping, stakeholder alignment, data modelling, rollout.";
+  "Implementation consultant in Barcelona specialising in account rescue, retention and expansion — spotting at-risk accounts, driving adoption, and turning churn risk into signed contracts.";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -84,18 +84,18 @@ const atlas: AtlasEntry[] = [
   },
 ];
 
-const capabilities = [
+const method = [
   {
-    title: "Implementation & Rollout",
-    note: "Configuring and launching enterprise SaaS and data platforms for EMEA accounts — discovery, requirements, configuration, UAT, go-live, handover.",
+    title: "Diagnostic signals",
+    note: "Usage drop-off, recurring escalations, a client that has gone quiet, and any gap between what was sold and what is actually being delivered.",
   },
   {
-    title: "Project & Stakeholder Management",
-    note: "Running programs across executives and IC teams on deadline-driven timelines, keeping scope, delivery, and expectations aligned.",
+    title: "Intervention",
+    note: "Map the client's business priorities, drive adoption where usage has stalled, bridge client and technical teams, and rebuild trust with the stakeholders who matter.",
   },
   {
-    title: "Data & Systems",
-    note: "Data modelling, source mapping, automated pipelines, and audit-ready structures that hold up under scrutiny.",
+    title: "Outcome",
+    note: "Retention secured, account expanded, health score recovered — churn risk converted into a signed contract.",
   },
 ];
 
@@ -107,9 +107,9 @@ const stats = [
 ];
 
 const coreSkills = [
-  "Implementation",
   "Project management",
   "Stakeholder management",
+  "Implementation",
   "Requirements gathering",
   "Data modelling",
   "SaaS configuration",
@@ -124,13 +124,16 @@ const domainSkills = [
   "CSRD · GRI · GHG Protocol",
 ];
 
+const tagSkills = [...coreSkills, "Adoption & enablement", "Escalation management"];
+
 function Index() {
   return (
     <main className="relative min-h-screen grid-bg">
       <div className="relative mx-auto max-w-5xl px-6 md:px-10">
         <TopBar />
         <Hero />
-        <Capabilities />
+        <StatsBand />
+        <Method />
         <Atlas />
         <About />
         <Expertise />
@@ -196,7 +199,7 @@ function TopBar() {
 function Hero() {
   const meta = [
     ["Ref.", "AV / PORTFOLIO / 001"],
-    ["Discipline", "Enterprise SaaS implementation · Delivery"],
+    ["Discipline", "Account rescue · Retention · Expansion"],
     ["Based", "Barcelona, ES · Remote-EU"],
     ["Open to", "Tech · Fintech · Supply chain · Climate"],
     ["Languages", "EN · IT · ES"],
@@ -216,15 +219,16 @@ function Hero() {
             Andrea Vassallo
           </h1>
           <p className="font-mono text-sm mt-3 text-[color:var(--accent-ink)] uppercase tracking-[0.18em]">
-            Implementation Consultant · Project Delivery · Barcelona
+            Implementation Consultant — Account Rescue, Retention &amp;
+            Expansion · Barcelona
           </p>
 
           <p className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-[color:var(--secondary-ink)]">
-            I implement enterprise SaaS and data platforms end to end — scoping,
-            stakeholder alignment, data modelling, rollout. I proved that
-            delivery pattern on some of the hardest data problems there are:
-            regulated sustainability reporting, where the deadline is legal and
-            the numbers have to survive an audit.
+            I take on accounts that are drifting — stalled adoption, escalations
+            piling up, a client questioning the renewal — and turn them back
+            into retained, expanding relationships. I proved that pattern in
+            sustainability tech, where the deadlines are legal and the numbers
+            have to survive an audit, but the work travels to any vertical.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
@@ -283,34 +287,10 @@ function CTA({
   );
 }
 
-function Capabilities() {
+function StatsBand() {
   return (
-    <section className="hairline py-20 md:py-28">
-      <div className="flex items-center gap-3 mb-10">
-        <span className="smallcaps">02 / WHAT I DO</span>
-        <span className="h-px flex-1 bg-[color:var(--hairline)]" />
-      </div>
-
-      <div className="grid gap-10 md:grid-cols-3 md:gap-8">
-        {capabilities.map((c, i) => (
-          <div
-            key={c.title}
-            className="border-t border-[color:var(--ink)] pt-5"
-          >
-            <div className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[color:var(--muted-ink)] mb-3">
-              № {String(i + 1).padStart(2, "0")}
-            </div>
-            <h3 className="font-display text-2xl leading-tight text-[color:var(--ink)]">
-              {c.title}
-            </h3>
-            <p className="mt-4 text-[color:var(--secondary-ink)] leading-relaxed">
-              {c.note}
-            </p>
-          </div>
-        ))}
-      </div>
-
-      <dl className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8 border-t border-[color:var(--hairline)] pt-10">
+    <section className="hairline py-14 md:py-16">
+      <dl className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8">
         {stats.map((s) => (
           <div key={s.label}>
             <dt className="smallcaps mb-3">{s.label}</dt>
@@ -320,6 +300,45 @@ function Capabilities() {
           </div>
         ))}
       </dl>
+
+      <ul className="mt-10 flex flex-wrap gap-2 border-t border-[color:var(--hairline)] pt-6">
+        {tagSkills.map((skill) => (
+          <li
+            key={skill}
+            className="font-mono text-[0.62rem] uppercase tracking-[0.16em] px-2 py-1 border border-[color:var(--hairline)] text-[color:var(--muted-ink)]"
+          >
+            {skill}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function Method() {
+  return (
+    <section className="hairline py-20 md:py-28">
+      <div className="flex items-center gap-3 mb-10">
+        <span className="smallcaps">02 / METHOD</span>
+        <span className="h-px flex-1 bg-[color:var(--hairline)]" />
+        <span className="smallcaps hidden sm:block">How I work</span>
+      </div>
+
+      <div className="grid gap-8 md:grid-cols-3">
+        {method.map((m, i) => (
+          <div key={m.title} className="border-t border-[color:var(--ink)] pt-4">
+            <div className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[color:var(--muted-ink)] mb-2">
+              Step {String(i + 1).padStart(2, "0")}
+            </div>
+            <h3 className="font-mono text-sm uppercase tracking-[0.14em] text-[color:var(--ink)]">
+              {m.title}
+            </h3>
+            <p className="mt-3 text-sm md:text-base text-[color:var(--secondary-ink)] leading-relaxed">
+              {m.note}
+            </p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
@@ -329,26 +348,31 @@ function Atlas() {
   return (
     <section className="hairline py-20 md:py-28">
       <div className="flex items-center gap-3 mb-10">
-        <span className="smallcaps">03 / SELECTED IMPLEMENTATIONS</span>
+        <span className="smallcaps">03 / IN-DEPTH EXAMPLE</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
       </div>
 
       <div className="grid md:grid-cols-[1fr_auto] gap-8 md:items-end mb-14">
         <div>
+          <div className="smallcaps mb-4">
+            In-depth example: sustainability tech sector
+          </div>
           <h2 className="font-display text-4xl md:text-5xl text-[color:var(--ink)] leading-tight">
-            How complex data requirements become working systems.
+            What the work looks like inside one vertical.
           </h2>
           <p className="mt-5 max-w-xl text-[color:var(--secondary-ink)] leading-relaxed">
-            Field notes from delivery work across regulated industries —
-            manufacturing, food &amp; beverage, energy. Different sectors, same
-            pattern: messy requirements in, a system people actually use out.
+            These three accounts come from sustainability tech — one vertical,
+            not the whole picture. They are here because they show the method in
+            detail: what was at risk, what I changed, what shipped.
           </p>
         </div>
         <div className="font-mono text-xs text-[color:var(--muted-ink)] uppercase tracking-widest">
           <div>Entries · 03</div>
+          <div>Sector · 01</div>
           <div>Last updated · 2025</div>
         </div>
       </div>
+
 
       <ul className="border-t border-[color:var(--hairline)]">
         {atlas.map((entry, i) => (
