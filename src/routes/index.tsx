@@ -1,7 +1,6 @@
-import { ClientOnly, createFileRoute } from "@tanstack/react-router";
-import { lazy, Suspense, useState } from "react";
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 
-const Mark3D = lazy(() => import("@/components/Mark3D"));
 
 const OG_IMAGE =
   "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/389c451f-b211-444c-9754-0080fbddbaf6/id-preview-a7cda95f--8a706a7c-1838-498a-b824-5980252f6a15.lovable.app-1785353203641.png";
@@ -147,16 +146,33 @@ function Index() {
 function ModuleMark({ className = "" }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 64 64"
+      viewBox="0 0 32 32"
       className={className}
       fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinejoin="round"
+      aria-hidden="true"
     >
-      <path d="M32 12 L52 23 L32 34 L12 23 Z" />
-      <path d="M12 33 L32 44 L52 33" />
-      <path d="M12 42 L32 53 L52 42" opacity="0.5" />
+      <path
+        d="M6 8.5h7.5v7.5M26 23.5h-7.5V16"
+        stroke="currentColor"
+        strokeWidth="2.25"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+      />
+      <path
+        d="M13.5 12.25 16 14.75l2.5-2.5M18.5 19.75 16 17.25l-2.5 2.5"
+        stroke="var(--accent-ink)"
+        strokeWidth="2.25"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+      />
+      <path
+        d="M6 23.5v-7.5h7.5M26 8.5V16h-7.5"
+        stroke="currentColor"
+        strokeWidth="2.25"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+        opacity="0.38"
+      />
     </svg>
   );
 }
@@ -167,19 +183,7 @@ function TopBar() {
   return (
     <header className="flex items-center justify-between pt-8 pb-6">
       <div className="flex items-center gap-3">
-        <ClientOnly
-          fallback={
-            <ModuleMark className="h-6 w-6 text-[color:var(--accent-ink)]" />
-          }
-        >
-          <Suspense
-            fallback={
-              <ModuleMark className="h-6 w-6 text-[color:var(--accent-ink)]" />
-            }
-          >
-            <Mark3D className="h-8 w-8" />
-          </Suspense>
-        </ClientOnly>
+        <ModuleMark className="h-8 w-8 text-[color:var(--ink)]" />
         <span className="smallcaps">Andrea Vassallo · Portfolio</span>
       </div>
       <span className="smallcaps hidden sm:block">
