@@ -1,7 +1,6 @@
-import { ClientOnly, createFileRoute } from "@tanstack/react-router";
-import { lazy, Suspense, useState } from "react";
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 
-const Mark3D = lazy(() => import("@/components/Mark3D"));
 
 const OG_IMAGE =
   "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/389c451f-b211-444c-9754-0080fbddbaf6/id-preview-a7cda95f--8a706a7c-1838-498a-b824-5980252f6a15.lovable.app-1785353203641.png";
