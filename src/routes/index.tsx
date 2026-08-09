@@ -6,9 +6,9 @@ const OG_IMAGE =
   "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/389c451f-b211-444c-9754-0080fbddbaf6/id-preview-a7cda95f--8a706a7c-1838-498a-b824-5980252f6a15.lovable.app-1785353203641.png";
 
 const TITLE =
-  "Andrea Vassallo — Implementation Consultant & Project Manager, Barcelona";
+  "Andrea Vassallo — Account Rescue, Retention & Expansion, Barcelona";
 const DESCRIPTION =
-  "Implementation consultant and project manager in Barcelona. I deliver enterprise SaaS and data platforms end to end — scoping, stakeholder alignment, data modelling, rollout.";
+  "Implementation consultant in Barcelona specialising in account rescue, retention and expansion — spotting at-risk accounts, driving adoption, and turning churn risk into signed contracts.";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -84,18 +84,18 @@ const atlas: AtlasEntry[] = [
   },
 ];
 
-const capabilities = [
+const method = [
   {
-    title: "Implementation & Rollout",
-    note: "Configuring and launching enterprise SaaS and data platforms for EMEA accounts — discovery, requirements, configuration, UAT, go-live, handover.",
+    title: "Diagnostic signals",
+    note: "Usage drop-off, recurring escalations, a client that has gone quiet, and any gap between what was sold and what is actually being delivered.",
   },
   {
-    title: "Project & Stakeholder Management",
-    note: "Running programs across executives and IC teams on deadline-driven timelines, keeping scope, delivery, and expectations aligned.",
+    title: "Intervention",
+    note: "Map the client's business priorities, drive adoption where usage has stalled, bridge client and technical teams, and rebuild trust with the stakeholders who matter.",
   },
   {
-    title: "Data & Systems",
-    note: "Data modelling, source mapping, automated pipelines, and audit-ready structures that hold up under scrutiny.",
+    title: "Outcome",
+    note: "Retention secured, account expanded, health score recovered — churn risk converted into a signed contract.",
   },
 ];
 
@@ -107,9 +107,9 @@ const stats = [
 ];
 
 const coreSkills = [
-  "Implementation",
   "Project management",
   "Stakeholder management",
+  "Implementation",
   "Requirements gathering",
   "Data modelling",
   "SaaS configuration",
@@ -124,13 +124,16 @@ const domainSkills = [
   "CSRD · GRI · GHG Protocol",
 ];
 
+const tagSkills = [...coreSkills, "Adoption & enablement", "Escalation management"];
+
 function Index() {
   return (
     <main className="relative min-h-screen grid-bg">
       <div className="relative mx-auto max-w-5xl px-6 md:px-10">
         <TopBar />
         <Hero />
-        <Capabilities />
+        <StatsBand />
+        <Method />
         <Atlas />
         <About />
         <Expertise />
@@ -196,7 +199,7 @@ function TopBar() {
 function Hero() {
   const meta = [
     ["Ref.", "AV / PORTFOLIO / 001"],
-    ["Discipline", "Enterprise SaaS implementation · Delivery"],
+    ["Discipline", "Account rescue · Retention · Expansion"],
     ["Based", "Barcelona, ES · Remote-EU"],
     ["Open to", "Tech · Fintech · Supply chain · Climate"],
     ["Languages", "EN · IT · ES"],
@@ -216,15 +219,16 @@ function Hero() {
             Andrea Vassallo
           </h1>
           <p className="font-mono text-sm mt-3 text-[color:var(--accent-ink)] uppercase tracking-[0.18em]">
-            Implementation Consultant · Project Delivery · Barcelona
+            Implementation Consultant — Account Rescue, Retention &amp;
+            Expansion · Barcelona
           </p>
 
           <p className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-[color:var(--secondary-ink)]">
-            I implement enterprise SaaS and data platforms end to end — scoping,
-            stakeholder alignment, data modelling, rollout. I proved that
-            delivery pattern on some of the hardest data problems there are:
-            regulated sustainability reporting, where the deadline is legal and
-            the numbers have to survive an audit.
+            I take on accounts that are drifting — stalled adoption, escalations
+            piling up, a client questioning the renewal — and turn them back
+            into retained, expanding relationships. I proved that pattern in
+            sustainability tech, where the deadlines are legal and the numbers
+            have to survive an audit, but the work travels to any vertical.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
