@@ -348,26 +348,31 @@ function Atlas() {
   return (
     <section className="hairline py-20 md:py-28">
       <div className="flex items-center gap-3 mb-10">
-        <span className="smallcaps">03 / SELECTED IMPLEMENTATIONS</span>
+        <span className="smallcaps">03 / IN-DEPTH EXAMPLE</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
       </div>
 
       <div className="grid md:grid-cols-[1fr_auto] gap-8 md:items-end mb-14">
         <div>
+          <div className="smallcaps mb-4">
+            In-depth example: sustainability tech sector
+          </div>
           <h2 className="font-display text-4xl md:text-5xl text-[color:var(--ink)] leading-tight">
-            How complex data requirements become working systems.
+            What the work looks like inside one vertical.
           </h2>
           <p className="mt-5 max-w-xl text-[color:var(--secondary-ink)] leading-relaxed">
-            Field notes from delivery work across regulated industries —
-            manufacturing, food &amp; beverage, energy. Different sectors, same
-            pattern: messy requirements in, a system people actually use out.
+            These three accounts come from sustainability tech — one vertical,
+            not the whole picture. They are here because they show the method in
+            detail: what was at risk, what I changed, what shipped.
           </p>
         </div>
         <div className="font-mono text-xs text-[color:var(--muted-ink)] uppercase tracking-widest">
           <div>Entries · 03</div>
+          <div>Sector · 01</div>
           <div>Last updated · 2025</div>
         </div>
       </div>
+
 
       <ul className="border-t border-[color:var(--hairline)]">
         {atlas.map((entry, i) => (
