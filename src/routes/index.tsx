@@ -185,10 +185,7 @@ function ModuleMark({ className = "" }: { className?: string }) {
 function TopBar() {
   return (
     <header className="flex items-center justify-between pt-8 pb-6">
-      <div className="flex items-center gap-3">
-        <ModuleMark className="h-8 w-8 text-[color:var(--ink)]" />
-        <span className="smallcaps">Andrea Vassallo · Portfolio</span>
-      </div>
+      <span className="smallcaps">Andrea Vassallo · Portfolio</span>
       <span className="smallcaps hidden sm:block">
         Barcelona, ES · Available 2026
       </span>
