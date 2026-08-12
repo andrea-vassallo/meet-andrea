@@ -102,9 +102,10 @@ const method = [
 const stats = [
   { label: "Years in Tech & Consulting", value: "5+" },
   { label: "Clients Served", value: "50+" },
-  { label: "Assessments Delivered", value: "300+" },
+  { label: "Retention & Expansion ARR", value: "$80K+" },
   { label: "Client Satisfaction", value: ">90%" },
 ];
+
 
 const coreSkills = [
   "Project management",
@@ -116,13 +117,8 @@ const coreSkills = [
   "Process automation",
 ];
 
-const domainSkills = [
-  "ESG reporting",
-  "Carbon accounting",
-  "Supply chain data",
-  "EcoVadis",
-  "CSRD · GRI · GHG Protocol",
-];
+const domainSkills = ["ESG reporting", "Supply chain data"];
+
 
 const tagSkills = [...coreSkills, "Adoption & enablement", "Escalation management"];
 
@@ -384,22 +380,10 @@ function AtlasCard({
             {entry.client}
           </p>
 
-          <div className="mt-4 flex flex-wrap gap-2">
-            {entry.chips.map((chip) => (
-              <span
-                key={chip}
-                className="font-mono text-[0.65rem] uppercase tracking-[0.16em] px-2 py-1 border border-[color:var(--hairline)] text-[color:var(--ink)]"
-              >
-                {chip}
-              </span>
-            ))}
-          </div>
-
           <span className="md:hidden mt-4 inline-flex items-center gap-2 border border-[color:var(--hairline)] px-2 py-1 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-[color:var(--accent-ink)]">
             {isOpen ? "Collapse" : "Expand"}
             <span aria-hidden>{isOpen ? "−" : "+"}</span>
           </span>
-
 
           <div
             className={`grid transition-all duration-500 ease-out ${
@@ -418,9 +402,21 @@ function AtlasCard({
                 <p className="text-[color:var(--secondary-ink)] leading-relaxed">
                   {entry.description}
                 </p>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {entry.chips.map((chip) => (
+                    <span
+                      key={chip}
+                      className="font-mono text-[0.65rem] uppercase tracking-[0.16em] px-2 py-1 border border-[color:var(--hairline)] text-[color:var(--ink)]"
+                    >
+                      {chip}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
+
         </div>
 
         <div className="hidden md:flex flex-col items-end gap-3 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[color:var(--muted-ink)] pt-1">
