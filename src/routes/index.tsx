@@ -144,51 +144,12 @@ function Index() {
   );
 }
 
-/* ---------- Decorative layer ---------- */
-
-function ModuleMark({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 32 32"
-      className={className}
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M6 8.5h7.5v7.5M26 23.5h-7.5V16"
-        stroke="currentColor"
-        strokeWidth="2.25"
-        strokeLinecap="square"
-        strokeLinejoin="miter"
-      />
-      <path
-        d="M13.5 12.25 16 14.75l2.5-2.5M18.5 19.75 16 17.25l-2.5 2.5"
-        stroke="var(--accent-ink)"
-        strokeWidth="2.25"
-        strokeLinecap="square"
-        strokeLinejoin="miter"
-      />
-      <path
-        d="M6 23.5v-7.5h7.5M26 8.5V16h-7.5"
-        stroke="currentColor"
-        strokeWidth="2.25"
-        strokeLinecap="square"
-        strokeLinejoin="miter"
-        opacity="0.38"
-      />
-    </svg>
-  );
-}
-
 /* ---------- Sections ---------- */
 
 function TopBar() {
   return (
     <header className="flex items-center justify-between pt-8 pb-6">
-      <div className="flex items-center gap-3">
-        <ModuleMark className="h-8 w-8 text-[color:var(--ink)]" />
-        <span className="smallcaps">Andrea Vassallo · Portfolio</span>
-      </div>
+      <span className="smallcaps">Andrea Vassallo · Portfolio</span>
       <span className="smallcaps hidden sm:block">
         Barcelona, ES · Available 2026
       </span>
