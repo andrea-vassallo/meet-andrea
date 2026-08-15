@@ -551,7 +551,7 @@ function Expertise() {
         </div>
 
         <div>
-          <div className="smallcaps mb-5">Domain depth — sustainability data</div>
+          <div className="smallcaps mb-5">DOMAIN DEPTH</div>
           <ul className="flex flex-wrap gap-3">
             {domainSkills.map((e) => (
               <li
