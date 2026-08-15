@@ -156,11 +156,11 @@ function TopBar() {
 function Hero() {
   const meta = [
     ["Ref.", "AV / PORTFOLIO / 001"],
-    ["Discipline", "Account rescue · Retention · Expansion"],
+    ["Discipline", "Implementation · Retention · Expansion"],
     ["Based", "Barcelona, ES · Remote-EU"],
-    ["Open to", "Tech · Fintech · Supply chain · Climate"],
+    ["OPEN TO HELP YOU WITH\u00a0", "RegTech · Procurement · Climate · Compliance · Risk Management"],
     ["Languages", "EN · IT · ES"],
-    ["Status", "Open to conversations"],
+    ["Status", "Available"],
   ];
   return (
     <section className="hairline pt-14 pb-20 md:pt-20 md:pb-28">
@@ -176,8 +176,8 @@ function Hero() {
             Andrea Vassallo
           </h1>
           <p className="font-mono text-sm mt-3 text-[color:var(--accent-ink)] uppercase tracking-[0.18em]">
-            Implementation Consultant — Account Rescue, Retention &amp;
-            Expansion · Barcelona
+            IMPLEMENTATION CONSULTANT — WITH EXPERIENCE IN ACCOUNT RESCUE, RETENTION &amp;
+            EXPANSION
           </p>
 
           <p className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-[color:var(--secondary-ink)]">
