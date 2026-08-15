@@ -126,7 +126,6 @@ function Index() {
   return (
     <main className="relative min-h-screen grid-bg">
       <div className="relative mx-auto max-w-5xl px-6 md:px-10">
-        <TopBar />
         <Hero />
         <StatsBand />
         <Method />
@@ -142,16 +141,6 @@ function Index() {
 
 /* ---------- Sections ---------- */
 
-function TopBar() {
-  return (
-    <header className="flex items-center justify-between pt-8 pb-6">
-      <span className="smallcaps">Andrea Vassallo · Portfolio</span>
-      <span className="smallcaps hidden sm:block">
-        Barcelona, ES · Available 2026
-      </span>
-    </header>
-  );
-}
 
 function AvailableButton() {
   return (
@@ -176,7 +165,6 @@ function AvailableButton() {
 
 function Hero() {
   const meta: [string, ReactNode][] = [
-    ["Ref.", "AV / PORTFOLIO / 001"],
     ["Discipline", "Implementation · Retention · Expansion"],
     ["Based", "Barcelona, ES · Remote-EU"],
     ["OPEN TO HELP YOU WITH\u00a0", "Client Onboarding · Customer Success · Product Adoption · Software Implementation"],
@@ -188,7 +176,6 @@ function Hero() {
       <div className="flex items-center gap-3 mb-10">
         <span className="smallcaps">01 / STATEMENT</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
-        <span className="smallcaps">Rev. 2026.08</span>
       </div>
 
       <div className="grid gap-12 md:grid-cols-[minmax(0,1fr)_280px] md:gap-16">
@@ -196,9 +183,6 @@ function Hero() {
           <h1 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[1.02] text-[color:var(--ink)]">
             Andrea Vassallo
           </h1>
-          <p className="font-mono text-sm mt-3 text-[color:var(--accent-ink)] uppercase tracking-[0.18em]">
-            IMPLEMENTATION CONSULTANT — WITH EXPERIENCE IN ACCOUNT RETENTION &amp; EXPANSION AND PRODUCT ADOPTION
-          </p>
 
           <p className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-[color:var(--secondary-ink)]">
             I take on accounts that are drifting: stalled adoption, escalations piling up, a client questioning the renewal. I can help you turn them back into retained, expanding relationships.&nbsp;
@@ -212,7 +196,6 @@ function Hero() {
 
         {/* Spec panel */}
         <aside className="md:border-l md:border-[color:var(--hairline)] md:pl-8 md:pt-2">
-          <div className="smallcaps mb-5">Spec sheet</div>
           <dl className="space-y-4">
             {meta.map(([k, v]) => (
               <div key={k} className="border-b border-[color:var(--hairline)] pb-3">
@@ -581,12 +564,6 @@ function Expertise() {
         </div>
       </div>
 
-      <div className="mt-12 flex flex-wrap gap-x-8 gap-y-2 smallcaps border-t border-[color:var(--hairline)] pt-6">
-        <span>Languages · English</span>
-        <span>Italiano</span>
-        <span>Español</span>
-        <span className="text-[color:var(--accent-ink)]">Based · Barcelona 41.38°N 2.17°E</span>
-      </div>
     </section>
   );
 }
@@ -662,9 +639,8 @@ function ContactLine({
 
 function Footer() {
   return (
-    <footer className="hairline py-10 flex flex-wrap items-center justify-between gap-4">
+    <footer className="hairline py-10 flex flex-wrap items-center gap-4">
       <span className="smallcaps">© {new Date().getFullYear()} · Andrea Vassallo</span>
-      <span className="smallcaps">End of document · 06 / 06</span>
     </footer>
   );
 }
