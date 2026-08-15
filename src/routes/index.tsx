@@ -126,7 +126,6 @@ function Index() {
   return (
     <main className="relative min-h-screen grid-bg">
       <div className="relative mx-auto max-w-5xl px-6 md:px-10">
-        <TopBar />
         <Hero />
         <StatsBand />
         <Method />
@@ -142,16 +141,6 @@ function Index() {
 
 /* ---------- Sections ---------- */
 
-function TopBar() {
-  return (
-    <header className="flex items-center justify-between pt-8 pb-6">
-      <span className="smallcaps">Andrea Vassallo · Portfolio</span>
-      <span className="smallcaps hidden sm:block">
-        Barcelona, ES · Available 2026
-      </span>
-    </header>
-  );
-}
 
 function AvailableButton() {
   return (
@@ -176,7 +165,6 @@ function AvailableButton() {
 
 function Hero() {
   const meta: [string, ReactNode][] = [
-    ["Ref.", "AV / PORTFOLIO / 001"],
     ["Discipline", "Implementation · Retention · Expansion"],
     ["Based", "Barcelona, ES · Remote-EU"],
     ["OPEN TO HELP YOU WITH\u00a0", "Client Onboarding · Customer Success · Product Adoption · Software Implementation"],
