@@ -166,7 +166,7 @@ function AvailableButton() {
 function Hero() {
   const meta: [string, ReactNode][] = [
     ["Discipline", "Implementation · Retention · Expansion"],
-    ["Based", "Barcelona, ES · Remote-EU"],
+    ["Based", "Barcelona, ES"],
     ["OPEN TO HELP YOU WITH\u00a0", "Client Onboarding · Customer Success · Product Adoption · Software Implementation"],
     ["Languages", "EN · IT · ES"],
     ["Status", <AvailableButton key="status" />],
