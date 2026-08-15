@@ -179,7 +179,7 @@ function Hero() {
     ["Ref.", "AV / PORTFOLIO / 001"],
     ["Discipline", "Implementation · Retention · Expansion"],
     ["Based", "Barcelona, ES · Remote-EU"],
-    ["OPEN TO HELP YOU WITH\u00a0", "RegTech · Procurement · Climate · Compliance · Risk Management"],
+    ["OPEN TO HELP YOU WITH\u00a0", "Client Onboarding · Customer Success · Product Adoption · Software Implementation"],
     ["Languages", "EN · IT · ES"],
     ["Status", <AvailableButton key="status" />],
   ];
@@ -197,16 +197,11 @@ function Hero() {
             Andrea Vassallo
           </h1>
           <p className="font-mono text-sm mt-3 text-[color:var(--accent-ink)] uppercase tracking-[0.18em]">
-            IMPLEMENTATION CONSULTANT — WITH EXPERIENCE IN ACCOUNT RESCUE, RETENTION &amp;
-            EXPANSION
+            IMPLEMENTATION CONSULTANT — WITH EXPERIENCE IN ACCOUNT RETENTION &amp; EXPANSION AND PRODUCT ADOPTION
           </p>
 
           <p className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-[color:var(--secondary-ink)]">
-            I take on accounts that are drifting — stalled adoption, escalations
-            piling up, a client questioning the renewal — and turn them back
-            into retained, expanding relationships. I proved that pattern in
-            sustainability tech, where the deadlines are legal and the numbers
-            have to survive an audit, but the work travels to any vertical.
+            I take on accounts that are drifting: stalled adoption, escalations piling up, a client questioning the renewal. I can help you turn them back into retained, expanding relationships.&nbsp;
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
