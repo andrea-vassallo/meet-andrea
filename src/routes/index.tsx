@@ -570,14 +570,9 @@ function Contact() {
             to work together.
           </p>
 
-          <div className="mt-12 grid gap-5 max-w-xl">
-            <ContactLine label="Email" value={EMAIL} href={`mailto:${EMAIL}`} />
-            <ContactLine
-              label="LinkedIn"
-              value="andreamariavassallo"
-              href={LINKEDIN}
-              external
-            />
+          <div className="mt-10 flex flex-wrap gap-3">
+            <CTA href={`mailto:${EMAIL}`} label="Email" primary />
+            <CTA href={LINKEDIN} label="LinkedIn" external />
           </div>
         </div>
       </div>
@@ -585,38 +580,6 @@ function Contact() {
   );
 }
 
-function ContactLine({
-  label,
-  value,
-  href,
-  external,
-}: {
-  label: string;
-  value: string;
-  href: string;
-  external?: boolean;
-}) {
-  return (
-    <a
-      href={href}
-      {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-      className="group grid grid-cols-[5.5rem_1fr_1.5rem] items-baseline gap-4 border-b border-[color:var(--surface)]/20 pb-3 hover:border-[color:var(--surface)]/60 transition-colors"
-    >
-      <span className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-[color:var(--surface)]/55">
-        {label}
-      </span>
-      <span className="font-mono text-sm md:text-base break-all text-[color:var(--surface)]">
-        {value}
-      </span>
-      <span
-        aria-hidden
-        className="justify-self-end text-[color:var(--surface)]/70 transition-transform group-hover:translate-x-1"
-      >
-        →
-      </span>
-    </a>
-  );
-}
 
 
 function Footer() {
