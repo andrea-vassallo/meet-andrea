@@ -176,7 +176,6 @@ function Hero() {
       <div className="flex items-center gap-3 mb-10">
         <span className="smallcaps">01 / STATEMENT</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
-        <span className="smallcaps">Rev. 2026.08</span>
       </div>
 
       <div className="grid gap-12 md:grid-cols-[minmax(0,1fr)_280px] md:gap-16">
@@ -184,9 +183,6 @@ function Hero() {
           <h1 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[1.02] text-[color:var(--ink)]">
             Andrea Vassallo
           </h1>
-          <p className="font-mono text-sm mt-3 text-[color:var(--accent-ink)] uppercase tracking-[0.18em]">
-            IMPLEMENTATION CONSULTANT — WITH EXPERIENCE IN ACCOUNT RETENTION &amp; EXPANSION AND PRODUCT ADOPTION
-          </p>
 
           <p className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-[color:var(--secondary-ink)]">
             I take on accounts that are drifting: stalled adoption, escalations piling up, a client questioning the renewal. I can help you turn them back into retained, expanding relationships.&nbsp;
@@ -200,7 +196,6 @@ function Hero() {
 
         {/* Spec panel */}
         <aside className="md:border-l md:border-[color:var(--hairline)] md:pl-8 md:pt-2">
-          <div className="smallcaps mb-5">Spec sheet</div>
           <dl className="space-y-4">
             {meta.map(([k, v]) => (
               <div key={k} className="border-b border-[color:var(--hairline)] pb-3">
