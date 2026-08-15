@@ -175,7 +175,7 @@ function AvailableButton() {
 }
 
 function Hero() {
-  const meta = [
+  const meta: [string, ReactNode][] = [
     ["Ref.", "AV / PORTFOLIO / 001"],
     ["Discipline", "Implementation · Retention · Expansion"],
     ["Based", "Barcelona, ES · Remote-EU"],
