@@ -119,9 +119,6 @@ const coreSkills = [
 
 const domainSkills = ["ESG reporting", "Supply chain data"];
 
-
-const tagSkills = [...coreSkills, "Adoption & enablement", "Escalation management"];
-
 function Index() {
   return (
     <main className="relative min-h-screen grid-bg">
@@ -257,16 +254,6 @@ function StatsBand() {
         ))}
       </dl>
 
-      <ul className="mt-10 flex flex-wrap gap-2 border-t border-[color:var(--hairline)] pt-6">
-        {tagSkills.map((skill) => (
-          <li
-            key={skill}
-            className="font-mono text-[0.62rem] uppercase tracking-[0.16em] px-2 py-1 border border-[color:var(--hairline)] text-[color:var(--muted-ink)]"
-          >
-            {skill}
-          </li>
-        ))}
-      </ul>
     </section>
   );
 }
@@ -321,11 +308,6 @@ function Atlas() {
             not the whole picture. They are here because they show the method in
             detail: what was at risk, what I changed, what shipped.
           </p>
-        </div>
-        <div className="font-mono text-xs text-[color:var(--muted-ink)] uppercase tracking-widest">
-          <div>Entries · 03</div>
-          <div>Sector · 01</div>
-          <div>Last updated · 2025</div>
         </div>
       </div>
 
