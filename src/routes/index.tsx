@@ -564,12 +564,6 @@ function Expertise() {
         </div>
       </div>
 
-      <div className="mt-12 flex flex-wrap gap-x-8 gap-y-2 smallcaps border-t border-[color:var(--hairline)] pt-6">
-        <span>Languages · English</span>
-        <span>Italiano</span>
-        <span>Español</span>
-        <span className="text-[color:var(--accent-ink)]">Based · Barcelona 41.38°N 2.17°E</span>
-      </div>
     </section>
   );
 }
@@ -645,9 +639,8 @@ function ContactLine({
 
 function Footer() {
   return (
-    <footer className="hairline py-10 flex flex-wrap items-center justify-between gap-4">
+    <footer className="hairline py-10 flex flex-wrap items-center gap-4">
       <span className="smallcaps">© {new Date().getFullYear()} · Andrea Vassallo</span>
-      <span className="smallcaps">End of document · 06 / 06</span>
     </footer>
   );
 }
