@@ -454,7 +454,7 @@ function About() {
     },
     {
       company: "EcoVadis",
-      role: "Senior Analyst → Analyst",
+      role: "Senior Analyst",
       period: "2022 – 2025",
       note: "Owned client-facing analysis engagements at scale across the EMEA market, working to strict quality standards and turnaround times.",
     },
