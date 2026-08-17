@@ -143,18 +143,17 @@ function AvailableButton() {
   return (
     <a
       href={`mailto:${EMAIL}`}
-      className="group relative inline-flex items-center gap-3 px-4 py-2 rounded-full bg-emerald-500/5 border border-emerald-500/30 hover:border-emerald-400/60 hover:bg-emerald-500/10 transition-all duration-300 cursor-pointer shadow-[0_0_20px_rgba(16,185,129,0.05)]"
+      className="group relative inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500 border border-emerald-400 hover:bg-emerald-400 hover:border-emerald-300 transition-all duration-300 cursor-pointer shadow-[0_0_16px_rgba(16,185,129,0.35)]"
     >
       <span className="relative flex h-2 w-2">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-60" />
-        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-70" />
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
       </span>
-      <span className="font-mono text-[11px] font-semibold tracking-[0.1em] text-emerald-400 uppercase">
+      <span className="font-mono text-[10px] font-semibold tracking-[0.1em] text-white uppercase">
         Available to chat
       </span>
-      <div className="absolute inset-x-6 top-[1px] h-px bg-gradient-to-r from-transparent via-emerald-400/20 to-transparent" />
       <div className="absolute inset-0 overflow-hidden rounded-full pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
       </div>
     </a>
   );
