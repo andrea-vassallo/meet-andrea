@@ -532,9 +532,6 @@ function Expertise() {
         </div>
       </div>
 
-      <div className="mt-14 pt-6 border-t border-[color:var(--hairline)] font-mono text-[0.78rem] text-[color:var(--muted-ink)]">
-        Languages · English / Italiano / Español / Based · Barcelona
-      </div>
     </section>
   );
 }
