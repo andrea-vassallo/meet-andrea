@@ -86,7 +86,7 @@ const atlas: AtlasEntry[] = [
 
 const method = [
   {
-    title: "Diagnostic signals",
+    title: "DIAGNOSIS",
     note: "Usage drop-off, recurring escalations, a client that has gone quiet, and any gap between what was sold and what is actually being delivered.",
   },
   {
