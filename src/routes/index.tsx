@@ -101,9 +101,9 @@ const method = [
 
 const stats = [
   { label: "Years in Tech & Consulting", value: "5+" },
-  { label: "Clients Served", value: "50+" },
-  { label: "Retention & Expansion ARR", value: "$80K+" },
-  { label: "Client Satisfaction", value: ">90%" },
+  { label: "COMPANIES SERVED", value: "50+" },
+  { label: "ADDED TO ARR\u00a0", value: "$80K+" },
+  { label: "SATISFIED CLIENTS", value: ">90%" },
 ];
 
 
@@ -152,7 +152,7 @@ function Hero() {
   const meta: [string, ReactNode][] = [
     ["DISCIPLINES", "Implementation · Retention · Expansion"],
     ["BASED IN", "Barcelona, ES"],
-    ["OPEN TO HELP WITH\u00a0", "Client Onboarding · Customer Success · Product Adoption · Software Implementation"],
+    ["OPEN TO HELP WITH\u00a0", "Client Onboarding · SaaS Project Management · Product Adoption · Strategy & Operations"],
     ["Languages", "EN · IT · ES"],
     ["Status", <AvailableButton key="status" />],
   ];
@@ -170,7 +170,9 @@ function Hero() {
           </h1>
 
           <p className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-[color:var(--secondary-ink)]">
-            I take on accounts that are drifting: stalled adoption, escalations piling up, a client questioning the renewal. I can help you turn them back into retained, expanding relationships.&nbsp;
+            Tired of selling something nobody uses?
+            <br />
+            I can help you translate your products or services into tangible, measurable ROI for your clients and users.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
