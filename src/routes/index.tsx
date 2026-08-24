@@ -95,7 +95,7 @@ const method = [
   },
   {
     title: "Outcome",
-    note: "Retention secured, account expanded, health score recovered — churn risk converted into a signed contract.",
+    note: "Retention secured, account expanded, health score recovered — churn risk converted into revenue.",
   },
 ];
 
