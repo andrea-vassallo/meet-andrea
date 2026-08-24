@@ -563,8 +563,8 @@ function Contact() {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
-            <CTA href={`mailto:${EMAIL}`} label="Email" primary />
-            <CTA href={LINKEDIN} label="LinkedIn" external />
+            <CTA href={`mailto:${EMAIL}`} label="Email" primary dark />
+            <CTA href={LINKEDIN} label="LinkedIn" external dark />
           </div>
         </div>
       </div>
