@@ -6,9 +6,9 @@ const OG_IMAGE =
   "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/389c451f-b211-444c-9754-0080fbddbaf6/id-preview-a7cda95f--8a706a7c-1838-498a-b824-5980252f6a15.lovable.app-1785353203641.png";
 
 const TITLE =
-  "Andrea Vassallo — Account Rescue, Retention & Expansion, Barcelona";
+  "Andrea Vassallo — Churn Reduction & Account Recovery, Barcelona";
 const DESCRIPTION =
-  "Implementation consultant in Barcelona specialising in account rescue, retention and expansion — spotting at-risk accounts, driving adoption, and turning churn risk into signed contracts.";
+  "Implementation consultant in Barcelona helping companies reduce churn and recover at-risk accounts — spotting early risk signals, driving adoption, and turning renewal risk into expansion revenue.";
 
 export const Route = createFileRoute("/")({
   component: Index,
