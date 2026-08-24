@@ -86,7 +86,7 @@ const atlas: AtlasEntry[] = [
 
 const method = [
   {
-    title: "Diagnostic signals",
+    title: "DIAGNOSIS",
     note: "Usage drop-off, recurring escalations, a client that has gone quiet, and any gap between what was sold and what is actually being delivered.",
   },
   {
@@ -95,7 +95,7 @@ const method = [
   },
   {
     title: "Outcome",
-    note: "Retention secured, account expanded, health score recovered — churn risk converted into a signed contract.",
+    note: "Retention secured, account expanded, health score recovered — churn risk converted into revenue.",
   },
 ];
 
@@ -171,7 +171,7 @@ function Hero() {
           <p className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-[color:var(--secondary-ink)]">
             Tired of selling something nobody uses?
             <br />
-            I can help you translate your products or services into tangible, measurable ROI for your clients and users.
+            I can help you translate products or services into tangible, measurable ROI for your clients and users, and in more revenue for you.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
