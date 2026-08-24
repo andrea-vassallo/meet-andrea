@@ -101,9 +101,9 @@ const method = [
 
 const stats = [
   { label: "Years in Tech & Consulting", value: "5+" },
-  { label: "Clients Served", value: "50+" },
-  { label: "Retention & Expansion ARR", value: "$80K+" },
-  { label: "Client Satisfaction", value: ">90%" },
+  { label: "COMPANIES SERVED", value: "50+" },
+  { label: "ADDED TO ARR\u00a0", value: "$80K+" },
+  { label: "SATISFIED CLIENTS", value: ">90%" },
 ];
 
 
