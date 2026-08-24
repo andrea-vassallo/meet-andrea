@@ -152,7 +152,7 @@ function Hero() {
   const meta: [string, ReactNode][] = [
     ["DISCIPLINES", "Implementation · Retention · Expansion"],
     ["BASED IN", "Barcelona, ES"],
-    ["OPEN TO HELP WITH\u00a0", "Client Onboarding · Customer Success · Product Adoption · Software Implementation"],
+    ["OPEN TO HELP WITH\u00a0", "Client Onboarding · SaaS Project Management · Product Adoption · Strategy & Operations"],
     ["Languages", "EN · IT · ES"],
     ["Status", <AvailableButton key="status" />],
   ];
