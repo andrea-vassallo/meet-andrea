@@ -170,7 +170,9 @@ function Hero() {
           </h1>
 
           <p className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-[color:var(--secondary-ink)]">
-            I take on accounts that are drifting: stalled adoption, escalations piling up, a client questioning the renewal. I can help you turn them back into retained, expanding relationships.&nbsp;
+            Tired of selling something nobody uses?
+            <br />
+            I can help you translate your products or services into tangible, measurable ROI for your clients and users.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
