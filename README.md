@@ -1,6 +1,6 @@
-# Welcome to your Lovable project
+# meet-andrea
 
-This project was built with [Lovable](https://lovable.dev).
+Personal site of Andrea Vassallo — implementation consultant in Barcelona specialising in account rescue, retention and expansion. Built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
