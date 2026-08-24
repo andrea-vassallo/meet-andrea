@@ -151,7 +151,7 @@ function AvailableButton() {
 function Hero() {
   const meta: [string, ReactNode][] = [
     ["BASED IN", "Barcelona, ES"],
-    ["OPEN TO HELP WITH\u00a0", "Client Onboarding · SaaS Project Management · Product Adoption · Strategy & Operations"],
+    ["OPEN TO HELP WITH\u00a0", "Churn Reduction · At-Risk Account Recovery · Retention & Expansion · Client Onboarding"],
     ["Languages", "EN · IT · ES"],
     ["Status", <AvailableButton key="status" />],
   ];
@@ -169,9 +169,7 @@ function Hero() {
           </h1>
 
           <p className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-[color:var(--secondary-ink)]">
-            Tired of selling something nobody uses?
-            <br />
-            I can help you translate products or services into tangible, measurable ROI for your clients and users, and in more revenue for you.
+            I help companies stop losing the accounts they already won — recovering at-risk clients, closing adoption gaps, and turning renewal risk into expansion revenue.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
@@ -557,9 +555,7 @@ function Contact() {
             Let's connect.
           </h2>
           <p className="mt-6 max-w-lg text-[color:var(--surface)]/70 text-lg">
-            Open to implementation, delivery, and project management roles in
-            Barcelona and remote-EU — any vertical where systems and data have
-            to work together.
+            Open to roles focused on reducing churn, recovering at-risk accounts, and turning renewal risk into expansion — implementation, delivery, or retention roles, in Barcelona and remote-EU.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
