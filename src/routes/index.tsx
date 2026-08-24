@@ -107,17 +107,6 @@ const stats = [
 ];
 
 
-const coreSkills = [
-  "Project management",
-  "Stakeholder management",
-  "Implementation",
-  "Requirements gathering",
-  "Data modelling",
-  "SaaS configuration",
-  "Process automation",
-];
-
-const domainSkills = ["ESG reporting", "Supply chain data"];
 
 function Index() {
   return (
@@ -515,36 +504,36 @@ function Expertise() {
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
       </div>
 
-      <div className="grid gap-12 md:grid-cols-2 md:gap-16">
+      <div className="grid gap-12 md:grid-cols-3 md:gap-10">
         <div>
-          <div className="smallcaps mb-5">Core — transferable</div>
-          <ul className="flex flex-wrap gap-3">
-            {coreSkills.map((e) => (
-              <li
-                key={e}
-                className="px-4 py-2 border border-[color:var(--ink)] text-sm text-[color:var(--ink)] font-mono uppercase tracking-[0.12em] hover:bg-[color:var(--ink)] hover:text-[color:var(--surface)] transition-colors"
-              >
-                {e}
-              </li>
-            ))}
-          </ul>
+          <div className="smallcaps mb-4">Systems</div>
+          <p className="text-[color:var(--secondary-ink)] leading-relaxed">
+            Enterprise SaaS from requirements to go-live — configuration, data
+            modelling, automation that replaces manual reporting.
+          </p>
         </div>
 
         <div>
-          <div className="smallcaps mb-5">DOMAIN DEPTH</div>
-          <ul className="flex flex-wrap gap-3">
-            {domainSkills.map((e) => (
-              <li
-                key={e}
-                className="px-3 py-1.5 border border-[color:var(--hairline)] text-xs text-[color:var(--muted-ink)] font-mono uppercase tracking-[0.12em]"
-              >
-                {e}
-              </li>
-            ))}
-          </ul>
+          <div className="smallcaps mb-4">People</div>
+          <p className="text-[color:var(--secondary-ink)] leading-relaxed">
+            The harder part is rarely the system. It's getting executives and
+            individual contributors aligned on what ships and when, and
+            rebuilding trust when an account has gone quiet.
+          </p>
+        </div>
+
+        <div>
+          <div className="smallcaps mb-4">Context</div>
+          <p className="text-[color:var(--secondary-ink)] leading-relaxed">
+            Five years inside sustainability data — ESG reporting, supply chain
+            data — but the method isn't sector-specific.
+          </p>
         </div>
       </div>
 
+      <div className="mt-14 pt-6 border-t border-[color:var(--hairline)] font-mono text-[0.78rem] text-[color:var(--muted-ink)]">
+        Languages · English / Italiano / Español / Based · Barcelona
+      </div>
     </section>
   );
 }
