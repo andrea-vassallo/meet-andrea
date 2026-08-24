@@ -204,17 +204,23 @@ function CTA({
   label,
   external,
   primary,
+  dark,
 }: {
   href: string;
   label: string;
   external?: boolean;
   primary?: boolean;
+  dark?: boolean;
 }) {
   const base =
     "group inline-flex items-center gap-3 px-5 py-3 text-sm font-mono uppercase tracking-[0.14em] transition-colors";
-  const cls = primary
-    ? `${base} bg-[color:var(--ink)] text-[color:var(--surface)] hover:bg-[color:var(--accent-ink)]`
-    : `${base} border border-[color:var(--ink)] text-[color:var(--ink)] hover:bg-[color:var(--ink)] hover:text-[color:var(--surface)]`;
+  const cls = dark
+    ? primary
+      ? `${base} bg-[color:var(--surface)] text-[color:var(--ink)] hover:bg-[color:var(--surface)]/85`
+      : `${base} border border-[color:var(--surface)] text-[color:var(--surface)] hover:bg-[color:var(--surface)] hover:text-[color:var(--ink)]`
+    : primary
+      ? `${base} bg-[color:var(--ink)] text-[color:var(--surface)] hover:bg-[color:var(--accent-ink)]`
+      : `${base} border border-[color:var(--ink)] text-[color:var(--ink)] hover:bg-[color:var(--ink)] hover:text-[color:var(--surface)]`;
   return (
     <a
       href={href}
@@ -557,8 +563,8 @@ function Contact() {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
-            <CTA href={`mailto:${EMAIL}`} label="Email" primary />
-            <CTA href={LINKEDIN} label="LinkedIn" external />
+            <CTA href={`mailto:${EMAIL}`} label="Email" primary dark />
+            <CTA href={LINKEDIN} label="LinkedIn" external dark />
           </div>
         </div>
       </div>
