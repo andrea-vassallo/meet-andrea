@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
+import { AskAndrea, SUGGESTED } from "@/components/AskAndrea";
 
 
 const OG_IMAGE =
@@ -36,6 +37,7 @@ type AtlasEntry = {
   filed: string;
   industry: string;
   chips: string[];
+  tags: string[];
   client: string;
   project: string;
   delivered: string;
@@ -47,6 +49,7 @@ const atlas: AtlasEntry[] = [
     id: "MFG-01",
     filed: "2025",
     industry: "Manufacturing",
+    tags: ["Complex rollout", "Stakeholder alignment"],
     chips: ["Module rollout", "Executive stakeholders", "CSRD · GRI"],
     client: "US-based industrial manufacturer, $100M+ revenue",
     project:
@@ -60,6 +63,7 @@ const atlas: AtlasEntry[] = [
     id: "F&B-02",
     filed: "2024",
     industry: "Food & Beverage",
+    tags: ["Adoption & enablement", "Data & process"],
     chips: ["Data governance", "Value-chain modelling", "GHG Protocol"],
     client: "$500M+ revenue manufacturer of bakery products",
     project:
@@ -73,6 +77,7 @@ const atlas: AtlasEntry[] = [
     id: "ENR-03",
     filed: "2024",
     industry: "Energy",
+    tags: ["Data & process", "Complex rollout"],
     chips: ["Pipeline automation", "Source mapping", "Audit-ready"],
     client: "Large European energy utility, €60B+ revenue",
     project:
@@ -109,10 +114,17 @@ const stats = [
 
 
 function Index() {
+  const [seed, setSeed] = useState<{ q: string; n: number } | null>(null);
+  const launch = (q: string) => {
+    setSeed({ q, n: Date.now() });
+    document.getElementById("ask")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
   return (
     <main className="relative min-h-screen grid-bg">
       <div className="relative mx-auto max-w-5xl px-6 md:px-10">
-        <Hero />
+        <NavBar />
+        <Hero onAsk={launch} />
+        <AskSection seed={seed} />
         <StatsBand />
         <Method />
         <Atlas />
@@ -148,7 +160,96 @@ function AvailableButton() {
   );
 }
 
-function Hero() {
+function NavBar() {
+  const links = [
+    ["Ask", "#ask"],
+    ["Method", "#method"],
+    ["Evidence", "#evidence"],
+    ["Experience", "#experience"],
+    ["Contact", "#contact"],
+  ];
+  return (
+    <nav className="sticky top-0 z-20 -mx-6 md:-mx-10 px-6 md:px-10 py-3 bg-[color:var(--surface)]/85 backdrop-blur border-b border-[color:var(--hairline)] flex items-center gap-6">
+      <span className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[color:var(--ink)]">
+        A. Vassallo <span className="text-[color:var(--muted-ink)]">· Operating manual</span>
+      </span>
+      <div className="ml-auto hidden md:flex gap-5">
+        {links.map(([l, h]) => (
+          <a key={h} href={h} className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-[color:var(--muted-ink)] hover:text-[color:var(--accent-ink)] transition-colors">
+            {l}
+          </a>
+        ))}
+      </div>
+    </nav>
+  );
+}
+
+function HeroAsk({ onAsk }: { onAsk: (q: string) => void }) {
+  const [q, setQ] = useState("");
+  return (
+    <div className="mt-10 max-w-2xl">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (q.trim()) {
+            onAsk(q);
+            setQ("");
+          }
+        }}
+        className="flex border border-[color:var(--ink)] bg-[color:var(--surface)]"
+      >
+        <span className="font-mono px-4 py-3.5 text-[color:var(--accent-ink)]">&gt;_</span>
+        <input
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          placeholder="Ask anything about Andrea…"
+          aria-label="Ask a question about Andrea"
+          className="flex-1 bg-transparent py-3.5 font-mono text-sm text-[color:var(--ink)] placeholder:text-[color:var(--muted-ink)] outline-none"
+        />
+        <button type="submit" className="px-5 font-mono text-xs uppercase tracking-[0.16em] bg-[color:var(--ink)] text-[color:var(--surface)] hover:bg-[color:var(--accent-ink)] transition-colors">
+          Ask
+        </button>
+      </form>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {SUGGESTED.slice(0, 3).map((s) => (
+          <button
+            key={s}
+            type="button"
+            onClick={() => onAsk(s)}
+            className="font-mono text-[0.68rem] px-2.5 py-1.5 border border-[color:var(--hairline)] text-[color:var(--secondary-ink)] hover:border-[color:var(--accent-ink)] hover:text-[color:var(--accent-ink)] transition-colors"
+          >
+            {s}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AskSection({ seed }: { seed: { q: string; n: number } | null }) {
+  return (
+    <section id="ask" className="hairline py-20 md:py-24 scroll-mt-14">
+      <div className="flex items-center gap-3 mb-10">
+        <span className="smallcaps">02 / ASK THE AGENT</span>
+        <span className="h-px flex-1 bg-[color:var(--hairline)]" />
+        <span className="smallcaps hidden sm:block">Interview me, async</span>
+      </div>
+      <div className="grid gap-10 md:grid-cols-[260px_1fr]">
+        <div>
+          <h2 className="font-display text-3xl md:text-4xl text-[color:var(--ink)] leading-tight">
+            The questions you'd ask in a first call.
+          </h2>
+          <p className="mt-4 text-[color:var(--secondary-ink)] leading-relaxed">
+            An AI assistant trained only on my verified experience, method and results. Ask it what you need to know.
+          </p>
+        </div>
+        <AskAndrea seed={seed} />
+      </div>
+    </section>
+  );
+}
+
+function Hero({ onAsk }: { onAsk: (q: string) => void }) {
   const meta: [string, ReactNode][] = [
     ["BASED IN", "Barcelona, ES"],
     ["OPEN TO HELP WITH\u00a0", "Churn Reduction · At-Risk Account Recovery · Retention & Expansion · Client Onboarding"],
@@ -172,10 +273,7 @@ function Hero() {
             I help companies stop losing the accounts they already won — recovering at-risk clients, closing adoption gaps, and turning renewal risk into expansion revenue.
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-3">
-            <CTA href={LINKEDIN} label="LinkedIn" external primary />
-            <CTA href={`mailto:${EMAIL}`} label="Email" />
-          </div>
+          <HeroAsk onAsk={onAsk} />
         </div>
 
         {/* Spec panel */}
@@ -236,6 +334,7 @@ function CTA({
 function StatsBand() {
   return (
     <section className="hairline py-14 md:py-16">
+      <div className="smallcaps mb-8">03 / BY THE NUMBERS</div>
       <dl className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8">
         {stats.map((s) => (
           <div key={s.label}>
@@ -253,9 +352,9 @@ function StatsBand() {
 
 function Method() {
   return (
-    <section className="hairline py-20 md:py-28">
+    <section id="method" className="hairline py-20 md:py-28 scroll-mt-14">
       <div className="flex items-center gap-3 mb-10">
-        <span className="smallcaps">02 / METHOD</span>
+        <span className="smallcaps">04 / PLAYBOOK</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
         <span className="smallcaps hidden sm:block">How I work</span>
       </div>
@@ -281,10 +380,13 @@ function Method() {
 
 function Atlas() {
   const [open, setOpen] = useState<string | null>("MFG-01");
+  const [filter, setFilter] = useState("All");
+  const filters = ["All", ...Array.from(new Set(atlas.flatMap((a) => a.tags)))];
+  const shown = filter === "All" ? atlas : atlas.filter((a) => a.tags.includes(filter));
   return (
-    <section className="hairline py-20 md:py-28">
+    <section id="evidence" className="hairline py-20 md:py-28 scroll-mt-14">
       <div className="flex items-center gap-3 mb-10">
-        <span className="smallcaps">03 / IN-DEPTH EXAMPLE</span>
+        <span className="smallcaps">05 / EVIDENCE</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
       </div>
 
@@ -305,8 +407,26 @@ function Atlas() {
       </div>
 
 
+      <div className="flex flex-wrap gap-2 mb-8" role="tablist" aria-label="Filter case studies">
+        {filters.map((f) => (
+          <button
+            key={f}
+            role="tab"
+            aria-selected={filter === f}
+            onClick={() => setFilter(f)}
+            className={`font-mono text-[0.68rem] uppercase tracking-[0.14em] px-3 py-1.5 border transition-colors ${
+              filter === f
+                ? "bg-[color:var(--ink)] border-[color:var(--ink)] text-[color:var(--surface)]"
+                : "border-[color:var(--hairline)] text-[color:var(--ink)] hover:border-[color:var(--accent-ink)] hover:text-[color:var(--accent-ink)]"
+            }`}
+          >
+            {f}
+          </button>
+        ))}
+      </div>
+
       <ul className="border-t border-[color:var(--hairline)]">
-        {atlas.map((entry, i) => (
+        {shown.map((entry, i) => (
           <AtlasCard
             key={entry.id}
             entry={entry}
@@ -459,9 +579,9 @@ function About() {
     },
   ];
   return (
-    <section className="hairline py-20 md:py-28">
+    <section id="experience" className="hairline py-20 md:py-28 scroll-mt-14">
       <div className="flex items-center gap-3 mb-10">
-        <span className="smallcaps">04 / ABOUT</span>
+        <span className="smallcaps">06 / EXPERIENCE</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
       </div>
 
@@ -505,7 +625,7 @@ function Expertise() {
   return (
     <section className="hairline py-20 md:py-28">
       <div className="flex items-center gap-3 mb-10">
-        <span className="smallcaps">05 / EXPERTISE</span>
+        <span className="smallcaps">07 / STRENGTHS</span>
         <span className="h-px flex-1 bg-[color:var(--hairline)]" />
       </div>
 
@@ -542,12 +662,12 @@ function Expertise() {
 
 function Contact() {
   return (
-    <section className="hairline py-20 md:py-28">
+    <section id="contact" className="hairline py-20 md:py-28 scroll-mt-14">
       <div className="relative overflow-hidden bg-[color:var(--ink)] text-[color:var(--surface)] px-6 py-16 md:px-14 md:py-20">
         <div className="relative">
           <div className="flex items-center gap-3 mb-10">
             <span className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-[color:var(--surface)]/60">
-              06 / CONTACT
+              08 / CONTACT
             </span>
             <span className="h-px flex-1 bg-[color:var(--surface)]/25" />
           </div>
