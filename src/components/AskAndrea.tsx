@@ -96,7 +96,7 @@ export function AskAndrea({ seed }: { seed: { q: string; n: number } | null }) {
                       : "text-[0.95rem] text-[color:var(--secondary-ink)]"
                 }`}
               >
-                {m.content.replace("[error] ", "") || <span className="animate-pulse">▍</span>}
+                {m.content.replace("[error] ", "").replace(/\*\*/g, "") || <span className="animate-pulse">▍</span>}
               </p>
             </div>
           );
